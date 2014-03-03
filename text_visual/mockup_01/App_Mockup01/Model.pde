@@ -1,11 +1,8 @@
-float sumArrayElements( int sumArrayTot) {
-  float sumArray = 0;
-
+float articlesOnChapterTotal( int _val) {  
+ _val = 0;
   for (  int i=0; i< articlesOnChapter.length;   i++  ) {
-    sumArray += articlesOnChapter[i];
+    _val += articlesOnChapter[i];
   }
-
-  return sumArrayTot;  
-
-}//END sumArrayElements()
+  return _val;
+}//END articlesOnChapterTotal
 
