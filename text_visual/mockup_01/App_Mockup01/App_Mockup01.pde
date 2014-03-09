@@ -4,7 +4,7 @@ int h = 700;
 float border = 20;
 //DATA
 float[] articlesOnChapter = { 
-  2, 6, 2, 4, 3, 4, 10, 6, 15, 8, 2, 3, 2, 4, 3, 4, 10, 6, 15, 8, 1, 3, 2, 4, 3, 4, 10, 6, 15, 8
+  2, 6, 2, 4, 3, 4, 10, 6, 15, 8, 2, 3, 7, 4, 3, 4, 10, 6, 15, 8, 1, 3, 2, 4, 3, 4, 10, 6, 15, 8
 }; 
 
 //WORKING AREA
@@ -23,20 +23,20 @@ float rectHFinal = rectH - rectSpacerWTodos;
 void setup() {
   size(w, h);
   //noStroke();
-  for (int i=0; i<articlesOnChapter.length; i++) {
-    articlesOnChapterTotal(i);
-    text("arrayTot = " + articlesOnChapterTotal(i), 100, 100 );
-  }
 }
 
 void draw() {
   background(#73CDFC);
   translate(border, border);
-
   //WORKING AREA
   workingArea( 0, 0, workingAreaW, workingAreaH, color(#FFFFFF) ); 
   //DISPLAY TITLES
   TextTitle("This is the Title", 16, color(0), 0, 12);
+
+
+//PRINTS NUM OF ARTICLES ON CHPTERS FROM articlesOnChapterTotal
+    text("arrayTot = " + articlesOnChapterTotal( lenghtEachArticleOnChapter() ), mouseX, mouseY );
+
 
   //DISPLAY RECTS
   for (int i=0; i<numberOfRect; i++) {
@@ -46,11 +46,13 @@ void draw() {
       TextTitle(Integer.toString(i), 8, color(0), rectW * i, h/2);
 
       fill(#3232FF);
-      float articlesOnChapterNew = articlesOnChapter[i];
+      float articlesOnChapterNew = articlesOnChapter[i];//reads n of articles of chapter array
+
       rect(rectW * i, 0 + articlesOnChapterNew *j, rectWFinal, rectWFinal);
       textSize(5);
     }//DRAW j FOR
   }//DRAW i CLOSE
+
 }//DRAW CLOSE
 
 
