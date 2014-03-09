@@ -1,4 +1,5 @@
 Notes for Thesis II files.
 Marko Tandefelt, Loretta Wolozin
 
-New Idea, to explore: Drawing with text. Let's see...
+- Back to the OCnstitution, now a visualization tool.
+- New Idea, to explore: Drawing with text. Let's see...
