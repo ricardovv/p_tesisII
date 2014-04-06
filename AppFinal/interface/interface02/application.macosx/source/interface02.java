@@ -355,7 +355,7 @@ text("Chapters\nArticles", visualPosX-5, visualPosY-5);
 }//panelTopics ENDS
 
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--hide-stop", "interface02" };
+    String[] appletArgs = new String[] { "interface02" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {

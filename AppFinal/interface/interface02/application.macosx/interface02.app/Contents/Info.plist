@@ -32,8 +32,7 @@
     <string>Created with Processing</string>
     <!-- End of the set that can be customized -->
 
-    <key>JVMRuntime</key>
-    <string>jdk1.7.0_51.jdk</string>
+    
 
     <key>JVMMainClassName</key>
     <string>interface02</string>
@@ -56,7 +55,7 @@
     </dict>
 
     <key>LSUIPresentationMode</key>
-    <integer>4</integer>
+    <integer>0</integer>
 
     <key>JVMOptions</key>
     <array>
