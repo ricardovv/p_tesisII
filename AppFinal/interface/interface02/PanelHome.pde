@@ -6,17 +6,24 @@ void panelHome(){
   //Background
   int panelW = w;
   int panelH = h;
-  fill(20, 50, 10);
   noStroke();
+//Blue box
+  fill(colorsBg[0]);
+  rect(0, 0, panelW, panelH);
+//Orange box
+  fill(colorsBg[1]);
+  rect(gridSpacer, gridSpacer, panelW-gridSpacer*2, panelH-gridSpacer*2);
 
- // rect(0, 0, panelW, panelH);
-//TEXT
-  fill(200);
+//TEXT TITLE
+  fill(255);
   textAlign(CENTER);
-  textSize(40);
-  text("CONSTITUTION\nUnderstanding the text\nBla\nBla\nPRess 1, 2, 3, 4", panelW/2, panelH/2);
+  textFont(fontTitles);
+  textSize(80);
+  text("THE CONSTITUTION", panelW/2, panelH/2-70);
+  textSize(25);
+  text("Visual Exploration Trough Chilean Current Contitution", panelW/2, panelH/2-20);
 
 // TITLE ON TOP
-panelTitles("HOME");
+panelTitles("HOME press 1 - ");
 
 }

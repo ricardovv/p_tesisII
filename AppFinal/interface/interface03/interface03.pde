@@ -1,10 +1,11 @@
 
 //COLORS
 color[] colorsBg = { #E86B05, #055883, #157AAF, #D1FFB9 };
+  int counter = 0;// counter to questionsHome
 
 //TYPOS
 PFont fontTitles;
-
+PFont fontButtonsHome;
 int w = 1024;
 int h = 768;
 int gridSpacer = 20;
@@ -12,7 +13,7 @@ String filename = "test.csv";
 Table rawData;
 
 // PANELS
-int panel = 1;
+int panel = 2;
 
 //DATA TO BE PARSED
 int articleId;
@@ -25,7 +26,7 @@ void setup() {
   parseData();
   //Fonts
   fontTitles = loadFont("Futura-Medium-48.vlw");
-
+  fontButtonsHome = loadFont("Georgia-Italic-48.vlw");
 }
 
 
@@ -52,6 +53,11 @@ void draw() {
 
   //  showText();
   textPressed();
+
+// TITLE ON TOP
+fill(255);
+panelTitles("                    HOME press 1 - Topics press 2 - History press 3 - About Press 4");
+
 }//CLOSE DRAW
 
 
