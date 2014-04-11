@@ -1,76 +1,83 @@
-// hacer clases botones panel
-
+// revisar panelW, lo necesito? 
 void panelTopics() {
-  int panelW = w/4 - gridSpacer*2;
-  int panelH = h - gridSpacer*2;
+  int panelW = gridUnit*11;//width bg panel topics
+  int panelH = h - gridUnit*2;
 
-//Size and position panel topics
-    int topicW = panelW;
-    int topicH = panelH/20;
+  //Topic Panel position 
+  int topicX = 0;
+  int topicY = gridUnit*6;//position from top
 
+  //Each Topics Panel Size
+  int topicW = panelW;//width each panel
+  int topicH = 40;//height each topic 
 
-//CAJA BG COLOR 
+  //IMPORTANT
   rectMode(CORNER);
-  fill(colorsBg[2]);
-  noStroke();
-  rect(0, gridSpacer*2, w, h);
 
-
-
-  //A - MENU TOPICS
-  for(int i=0; i<20; i++){
-      fill(30, 40, 50);
+  //A - MENU TOPICS - TEXT AND BOX
+  for (int i=0; i<20; i++) {
+    fill(30, 40, 50);
     //bg cajas de cada topic
-    stroke(60);
-    rect(0, gridSpacer*2 + topicH  * i, topicW, topicH );
+    stroke(colorsBg[2]);
+    rect(topicX, topicY + topicH  * i, topicW, topicH ); //Each box for category text
     fill(170);
     textAlign(LEFT, TOP);
     textSize(14);
-    text("Name of Category n " + i, 25, gridSpacer*2 + topicH  * i + 10);
+    text("Name of Category n " + i, topicX + 20, topicY + topicH  * i + 11);//Each category text
   }//end for
-//END MENU TOPICS
+  //END MENU TOPICS
 
 
-
-
-  //B - STRUCTURE VISUALIZATION
-  int visualW = 400; 
-  int visualH = h - (gridSpacer*2); 
-  //CAJA BG
+  //B - VISUALIZATION STRUCTURE, SMALL SQUARES SECOND PANEL 
+  //Visualizatyion Panel position 
+  int visualX = topicW;
+  int visualY = gridUnit*6;
+  //Visual Size
+  int visualW = gridUnit * 20; 
+  int visualH = h - (gridUnit*2); 
+  //Visual BG
   fill(40, 50, 60);// bg for visualization area 
-  noStroke();
-  rect(topicW+2, gridSpacer*2, visualW, visualH);
+  stroke(colorsBg[2]);
+  rect(visualX, visualY, visualW, visualH);
 
-//ELEMENTS
+  //ELEMENTS, BOXES 
   fill(200, 0, 0);
   noStroke();
-  int visualPosX = gridSpacer*2 + panelW + 60;
-  int visualPosY = gridSpacer*2 + visualH/2;
-  int visualAreaW = visualW - 80;
-  int visualAreaH = visualH - 20;
+  int visualPosX = visualX + gridUnit;
+  int visualPosY = visualY + gridUnit;
+  int visualAreaW = visualW - gridUnit*2;//Width elements
+  int visualAreaH = visualH - 20;//Height Elements
+  //TO TEST AREA
+  fill(250, 0, 0, 50);
+  rect(visualPosX, visualPosY, visualAreaW, visualAreaH-visualY  );
 
-  textSize(12);textAlign(RIGHT);
-  text("Chapters\nArticles", visualPosX-5, visualPosY-5);
-  rect(visualPosX, visualPosY, visualAreaW, 2);//red line
-
-  for(int i=0; i<22; i++){
-    for(int j=0; j<10; j++){
-      fill(200, 240, 240);
-//      stroke(250);
-      rect(visualPosX + 4 + 34 *i, 5+visualPosY +20 *j, 33, 18);//red line
-//      text();
-   }
+  //Boxes
+  for (int i=0; i<9; i++) {
+    for (int j=0; j<16; j++) {
+      if (i == 0) {//select first columt to color
+        fill(colorsBg[0]);
+      }else {
+        fill(200, 240, 240);
+      }
+      rect(visualPosX + 40 *i, visualPosY +36 *j, 39, 35);//boxes each article
+    }
   }
 
+  //Txt chapters & articles, Put here the Legend???
+  textSize(12);
+  textAlign(LEFT);
+  text("Chapters Articles", visualPosX, h-(gridUnit+10));
+ 
 
-  //TEXT LOAD
-  int textFrameW = visualW; 
-  int textFrameH = panelH;
+  //TEXT PANEL  
+  int textPanelX = topicW + visualW;  
+  int textPanelY = topicY;//Same posiiton from top than panel topics
+  int textPanelW = gridUnit * 20;  
+  int textPanelH = panelH;
   fill(55, 65, 80);
-  noStroke();  
-  rect(panelW*2.865, gridSpacer*2+1, textFrameW, textFrameH);
+    stroke(colorsBg[2]);
+  rect(textPanelX, textPanelY, textPanelW, textPanelH);
   //titles
-  panelTitles("TOPICS");
-
+  panelTitles("TOPICS & STRUCTURE");
 }//panelTopics ENDS
 

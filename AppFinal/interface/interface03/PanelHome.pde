@@ -12,7 +12,7 @@ void panelHome() {
   rect(0, 0, panelW, panelH);
   //Orange box
   fill(colorsBg[1]);
-  rect(gridSpacer, gridSpacer, panelW-gridSpacer*2, panelH-gridSpacer*2);
+  rect(gridUnit, gridUnit, panelW-gridUnit*2, panelH-gridUnit*2);
 
   //TEXT TITLE
   fill(255);
