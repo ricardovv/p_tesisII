@@ -2,9 +2,9 @@ PImage guia;
 
 
 //COLORS
-//Orange home, BLUE HOME, CELESTE TOPICS
+//Orange home, BLUE HOME, CELESTE TOPICS, CELESTE HISTORY 
 color[] colorsBg = { 
-  #E0683D, #39677F, #62ACCF, #000000
+  #E0683D, #39677F, #62ACCF, #AA0000
 };
 //BGStaticMain,  
 color[] colorsButton = {
@@ -20,6 +20,7 @@ int counter = 0;// counter to questionsHome
 //TYPOS
 PFont fontTitles;
 PFont fontButtonsHome;
+PFont fontBodyText;
 int w = 1024;
 int h = 768;
 int gridUnit = 20;
@@ -27,7 +28,7 @@ String filename = "test.csv";
 Table rawData;
 
 // PANELS
-int panel = 2;
+int panel = 3;
 
 //DATA TO BE PARSED
 String[] panelInfo;//PANEL INFO TEXT CONTENT
@@ -39,12 +40,13 @@ String articleContent;
 void setup() {
   size(w, h);
   background(colorsBg[2]);//BG PALE BLUE ALL
+  smooth();
   panelInfo =  loadStrings("panelInfo.txt");
   parseData();
   //Fonts
   fontTitles = loadFont("Futura-Medium-48.vlw");
   fontButtonsHome = loadFont("Georgia-Italic-48.vlw");
-
+  fontBodyText = loadFont("Georgia-48.vlw");
   guia = loadImage("guia.jpg");
 }
 
@@ -73,10 +75,7 @@ void draw() {
   //  showText();
   textPressed();
 
-  // TITLE ON TOP
-  fill(255);
-  panelTitles("                    HOME press 1 - Topics 2 - History 3 - About 4");
-
+  // BG IMage reference
   if (keyPressed == true) {
     tint(255, 100);
     image(guia, 0, 0);

@@ -77,6 +77,10 @@ void panelTopics() {
   fill(55, 65, 80);
     stroke(colorsBg[2]);
   rect(textPanelX, textPanelY, textPanelW, textPanelH);
+
+//quesitons
+  questions(topicX, topicY/2, 2);
+
   //titles
   panelTitles("TOPICS & STRUCTURE");
 }//panelTopics ENDS

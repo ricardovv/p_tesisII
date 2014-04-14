@@ -1,3 +1,2 @@
-0A political and electoral system Radiography; 1The figures revealing the crisis of representation of parliamentarians. 
-2The crisis of representation of parliamentarians is produced mainly by the Binominal Electoral System. In this system, the first and thirty mod voted candidates are elected, not the 1st and the 2nd. 
-3Source: A political and electoral system Radiography; The figures revealing the crisis of representation of parliamentarians" 4By : Juan Pablo Figueroa y Pedro Ramírez (12.09.2011)5http://ciperchile.cl/2011/09/12/las-reveladoras-cifras-de-la-crisis-de-representatividad-de-los-parlamentarios/
+0I made this because it was necessary for bridge the gap between people and socially important texts such as the Constitution. 1This project was made as part of a thesis project of Ricardo Vega at MFA Design & Technology program at Parsons The New School for Design. This prototype was created using Processing. The translation used was the one provided at The Constitute Project. 
+2Ricardo L. Vega M. - New York, May 2014 - ricadov.cl

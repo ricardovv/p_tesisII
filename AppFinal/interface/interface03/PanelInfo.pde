@@ -1,11 +1,7 @@
 // hacer clases botones panel
 
 void panelInfo() {
-
-
   rectMode(CORNER);
-  //titles
-
   //Background
   int infoW = w - gridUnit*4;
   int infoH = h - gridUnit*4;
@@ -32,15 +28,17 @@ void panelInfo() {
   int textPosX = infoX*10;
   int textPosY = infoY + gridUnit*10;
   int textW = 550;
+  smooth();
   fill(200);
   stroke(200);
+  textFont(fontBodyText);
   textAlign(LEFT);
-  textSize(20);
+  textSize(22);
   text("ABOUT THE PROJECT\n", textPosX, textPosY, textW, 400);  
   textSize(14);
   text("MOTIVATION\n" + panelInfo[0], textPosX, textPosY+gridUnit*2, textW, 400);
   text("CREDITS\n" + panelInfo[1], textPosX, textPosY+gridUnit*6, textW, 400);
-  text("OTHER\n" + panelInfo[1], textPosX, textPosY+gridUnit*10, textW, 400);
+  text("OTHER\n" + panelInfo[2], textPosX, textPosY+gridUnit*12, textW, 400);
 
   //TITLE ON TOP
   panelTitles("INFO AZUL");

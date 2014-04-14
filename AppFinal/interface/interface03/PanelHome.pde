@@ -4,31 +4,33 @@ void panelHome() {
   rectMode(CORNER);  //titles
 
   //Background
-  int panelW = w;
-  int panelH = h;
+  int panelHomeW = w;
+  int panelHomeH = h;
+  int panelHomeX = 0;
+  int panelHomeY = 0;
+
   noStroke();
   //Blue box
   fill(colorsBg[0]);
-  rect(0, 0, panelW, panelH);
+  rect(panelHomeX, panelHomeY, panelHomeW, panelHomeH);
   //Orange box
   fill(colorsBg[1]);
-  rect(gridUnit, gridUnit, panelW-gridUnit*2, panelH-gridUnit*2);
+  rect(gridUnit, gridUnit, panelHomeW-gridUnit*2, panelHomeH-gridUnit*2);
 
   //TEXT TITLE
   fill(255);
   textAlign(CENTER);
   textFont(fontTitles);
   textSize(80);
-  text("THE CONSTITUTION", panelW/2, panelH/2-160);
+  text("THE CONSTITUTION", panelHomeW/2, panelHomeH/2-160);
   textSize(25);
-  text("Visual Exploration Trough Chilean Current Contitution", panelW/2, panelH/2-110);
+  text("Visual Exploration Trough Chilean Current Contitution", panelHomeW/2, panelHomeH/2-110);
 
+  buttonsHome(250, panelHomeH-200, "Explore Topics");
+  buttonsHome(540, panelHomeH-200, "Explore History");
+  questions(panelHomeX, panelHomeH/2+20, 1);
 
-  buttonsHome(250, panelH-200, "Explore Topics");
-  buttonsHome(540, panelH-200, "Explore History");
-
-  questionsHome(panelW/2, panelH/2+50);
-}
+} //panelHome ends
 
 
 void buttonsHome(int _x, int _y, String _t) {
@@ -53,17 +55,10 @@ void buttonsHome(int _x, int _y, String _t) {
     onOver = color(250, 250, 150);
   }    //close if mousePressed
 
-
-
-  if (foundBottonHome >=0) {//check if there is a specific rect available.
+//check if there is a specific rect available.
+  if (foundBottonHome >=0) {
     if (mousePressed) {
       onOver = color(255, 255, 0);
-      //rect(x1, y1, x2, y2);//select the specific rect founded
-
-      //test buttons for loading sections
-      //      if (_t == "T") {
-      //        //        rect(200, 200, 200, 200);
-      //      }
     }
     else {
       //      onOver = 0;
@@ -85,31 +80,6 @@ void buttonsHome(int _x, int _y, String _t) {
   popMatrix();
 }//END BUTTONS 
 
-
-
-//PANEL QUESTIONS
-void questionsHome (int _x, int _y) {
-  String[] questionsHome = {
-    "Question 0", "Question 1", "Question 2", "Question 3", "Question 4"
-  };
-
-
-  if (frameCount % 200 == 0) {// see if 
-    println(frameCount);
-    counter += 1;
-    if (counter == 5) {//reset counter to 0
-      counter = 0;
-    }
-  }
-
-
-
-  fill(255);
-  textFont(fontButtonsHome);
-  textSize(40);  
-  textAlign(CENTER);
-  text(questionsHome[counter], _x, _y);
-}
 
 
 

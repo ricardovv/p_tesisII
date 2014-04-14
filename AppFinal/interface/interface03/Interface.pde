@@ -19,7 +19,6 @@ void navBarTop() {//Beacground of nav bar top in sectionsx`
   buttonsTop(w-gridUnit*6, 0, "H");
   //Button4
   buttonsTop(w-gridUnit*3, 0, "I");
-
 }//CLOSE navBarTop
 
 
@@ -36,37 +35,36 @@ void panelTitles(String _title) {
 
 
 
-void textPressed() {
+void textPressed() {//may be eliminated? just to teschanges among panels 
   if (keyPressed) {
 
     if (key == '1') {
       stroke(250);
       textSize(30);
       text("1 is pressed", 500, 25);
-      panel = 1; 
+      panel = 1;
     }// close key 1
 
-    if (key == '2') {
+      if (key == '2') {
       stroke(250);
       textSize(30);
       text("2 is pressed", 500, 25);
-      panel = 2; 
+      panel = 2;
     }// close key 2
 
-    if (key == '3') {
+      if (key == '3') {
       stroke(250);
       textSize(30);
       text("3 is pressed", 500, 25);
-      panel = 3; 
+      panel = 3;
     }// close key 3
 
-    if (key == '4') {
+      if (key == '4') {
       stroke(250);
       textSize(30);
       text("4 is pressed", 500, 25);
-      panel = 4; 
+      panel = 4;
     }// close key 3
-
   }//close keyPressed
 }//CLOSE textPressed
 
@@ -90,9 +88,19 @@ void buttonsTop(int _x, int _y, String _t) {
     if (mousePressed) {
       onOver = 150;
       //rect(x1, y1, x2, y2);//select the specific rect founded
-      //test buttons for loading sections
-      if (_t == "T") {
-        rect(200, 200, 200, 200);
+
+      //test buttons to load HOME
+      if (_t == "C") { // load HOME
+        panel = 1;
+      }
+      if (_t == "T") { // load TOPICS
+        panel = 2;
+      }
+      if (_t == "H") { // load HISTORY
+        panel = 3;
+      }
+      if (_t == "I") { // load INFO
+        panel = 4;
       }
     }
     else {
@@ -104,20 +112,73 @@ void buttonsTop(int _x, int _y, String _t) {
   fill(onOver);
   rect(x1, y1, x2-1, y2);
   fill(colorsBg[0]);
-  textSize(26);  textAlign(CENTER);
+  textSize(26);  
+  textAlign(CENTER);
   text(_t, 32 + _x, 38+_y);
-
 }//END BUTTONS
 
 
-void grid() {
-  for (int i=0; i<w; i++) {
-    stroke(220);
-    line(gridUnit *i, 0, gridUnit *i, h );
-    for (int j=0; j<h; j++) {
-      line(0, gridUnit *j, w, gridUnit *j );
+//grid functin eliminated, it cost to load
+
+
+
+//PANEL QUESTIONS - - - - - - - - - - - - - - - 
+void questions (int _x, int _y, int _panel) {
+  //Dirferent Questiojs for each panel
+  String[] questionsHome = {
+    "QuestionHome 0", "QuestionHome 1", "QuestionHome 2", "QuestionHome 3", "QuestionHome 4"
+  };
+  String[] questionsTopics = {
+    "QuestionTopics 0", "QuestionTopics 1", "QuestionTopics 2", "QuestionTopics 3", "QuestionTopics 4"
+  };
+  String[] questionsHistory = {
+    "QuestionHistory 0", "QuestionHistory 1", "QuestionHistory 2", "QuestionHistory 3", "QuestionHistory 4"
+  };
+  String[] questionsInfo = {
+    "QuestionInfo 0", "QuestionInfo 1", "QuestionInfo 2", "QuestionInfo 3", "QuestionInfo 4"
+  };
+
+
+  //To move through questions
+  if (frameCount % 200 == 0) {// see if 
+    println(frameCount);
+    counter += 1;
+    if (counter == 5) {//reset counter to 0
+      counter = 0;
     }
   }
-}//CLOSE GRID
 
+  //Display Questions
+  pushMatrix();
+  int questionsBgX = _x;
+  int questionsBgY = _y;
+  int questionsBgW = w;
+  int questionsBgH = gridUnit*3;
+
+  //bg questions rect
+pushMatrix();
+noStroke();
+  fill(colorsBg[3]);
+  rect(questionsBgX, questionsBgY, questionsBgW, questionsBgH);
+popMatrix();
+  //Text
+  fill(255);
+  textFont(fontButtonsHome);
+  textSize(26);  
+  textAlign(CENTER);
+//Select specific question to show
+  if (_panel == 1) {
+    text(questionsHome[counter], _x+w/2, _y + questionsBgH/1.5);
+  }  
+  if (_panel == 2) {
+    text(questionsTopics[counter], _x+w/2, _y + questionsBgH/1.5);
+  }  
+  if (_panel == 3) {
+    text(questionsHistory[counter], _x+w/2, _y + questionsBgH/1.5);
+  }  
+  if (_panel == 4) {
+    text(questionsInfo[counter], _x+w/2, _y + questionsBgH/1.5);
+  }  
+  popMatrix();
+}//PANEL QUESTIONS ENDS 
 
