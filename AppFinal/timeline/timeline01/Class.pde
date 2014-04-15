@@ -3,7 +3,8 @@ class TimeLine {
   //VARIABLES
   int lado, margenX;
   int tolerancia;
-  float posX, y, borda;
+  float posX, selectorPosY, borda;
+  int barH;// height ogf the bar top select yeatrs 
 
   //CONSTRUCTOR 
   TimeLine(int _posX) {
@@ -11,16 +12,17 @@ class TimeLine {
 
     //old variables
     lado = 30;//dimensions box and timeline, borders?
-    margenX = 200;// margin form the border
+    margenX = 100;// margin form the border
     tolerancia = 20;
     borda = 3;
+    barH = 60;
     //  x = margenX + lado;
-    y = height - 180;
+    selectorPosY = 160 + 375;
   }
 
 
   void display() {
-    rectMode(CENTER);
+    //    rectMode(CENTER);
     textAlign(CENTER);
     noStroke(); 
     textSize(10);
@@ -37,7 +39,7 @@ class TimeLine {
       }
       , 
       {
-        "1987", "Title of 1987", "This is the text detail of number 3\n This is a new Line"
+        "1990", "Title of 1987", "This is the text detail of number 3\n This is a new Line"
       }
       , 
       {
@@ -64,9 +66,11 @@ class TimeLine {
       ,
     };
 
+
+
     //CALC TIME 
     if (mousePressed && mouseButton == LEFT) {
-      if ((mouseY > y - lado / 2 - tolerancia) && (mouseY < y + lado / 2 + tolerancia)) {
+      if ((mouseY > selectorPosY - lado / 2 - tolerancia) && (mouseY < selectorPosY + lado / 2 + tolerancia)) {
         float distancia = dist(mouseX, 0, posX, 0);
         float vel = map(distancia, 10, width - 10, 0.5, 150);
 
@@ -81,60 +85,73 @@ class TimeLine {
     }//close If calc tine
 
 
-    //DRAWING
-    fill(colorsHistory[3]);//BG barra timeLine
-    rect(width / 2, y, width - margenX, lado);
 
-    //Color Rect Time Selector
-    fill(colorsHistory[4]);
-    rect(posX, y, 2*lado, lado - borda);
-
-
-    //box bg images
+    //box bg images and selector
+    //BOX BG IMAGES AND TEXT
     pushMatrix();
-    rectMode(CORNER);
-    fill(90);
-    rect(margenX/2, 160, width-margenX, /*capa[i].height +*/ 413);
+      rectMode(CORNER);
+      fill(40);
+      rect(0, 160, width, /*capa[i].height +*/ 374);
+      fill(80);
+      rect(margenX, 160, width-margenX*2, /*capa[i].height +*/ 374);
+      //COLOR LINE SELECTOR
+      fill(30);//BG BG
+      rect(0, selectorPosY, width, barH);
+      fill(50);//BG barra timeLine to be put i the  buttons??
+      rect(margenX, selectorPosY, width - margenX*2, barH);
+      
     popMatrix();
+
+
+
+    //Color Rect Time Selector. Once corrected the dates, use this
+     pushMatrix();
+    fill(colorsHistory[4]);
+//    rect(posX, selectorPosY, 2*lado, lado - borda);
+    rect(posX-10, selectorPosY-32, lado/2, lado);
+    popMatrix();
+
+
 
     //Loop trough images and text
     for (int i = 0; i < periodDemocracy.length; i++) {
-      float pt = map(int(periodDemocracy[i][0]), 1972, 2013, margenX + lado, width - margenX - lado);
+      float pt = map(int(periodDemocracy[i][0]), 1990, 2013, margenX + lado, width - margenX - lado);
 
-      text(periodDemocracy[i][1], pt, y - 40);
+      text(periodDemocracy[i][1], pt, selectorPosY+ 35);//titles of events
 
-      if (dist(posX, y, pt, y) <= lado) {
+      if (dist(posX, selectorPosY, pt, selectorPosY) <= lado) {
         fill(200, 0, 0);
         //        ellipse(pt, y, 5, 15);//Events Elements "onOver"
-        text(periodDemocracy[i][1], pt, y - 40);
+        //text(periodDemocracy[i][1], pt, selectorPosY - 40);
 
         //IMAGES AND TEXT PANEL 
         pushMatrix();
-        image(capa[i], margenX/2+10, 170);//position image
-        //TEXT TITLE
-        textSize(24);
-        textAlign(LEFT);
-        fill(255);
-        text(periodDemocracy[i][1], 480, 200); 
-        //TEXT CONTENT
-        textSize(16);
-        textAlign(LEFT);
-        fill(255);
-        text(periodDemocracy[i][2], 480, 240); 
+          image(capa[i], margenX+10, 170);//position image
+          //TEXT TITLE
+          textSize(20);
+          textAlign(LEFT);
+          fill(255);
+          text(periodDemocracy[i][1], 480, 190); 
+          //TEXT CONTENT
+          textSize(16);
+          textAlign(LEFT);
+          fill(255);
+          text(periodDemocracy[i][2], 480, 225); 
         popMatrix();
       }
-      else {
-        fill(0, 200, 0);
-        ellipse(pt, y, 5, 15);
-      }
+//      else {// it works for something or not.? 
+//        fill(0, 200, 0);
+//        //ellipse(pt, selectorPosY, 5, 15);
+//      }
+
       //EVENTS POINTS
-      fill(0, 0, 200);
-      ellipse(pt, y, 20, 20);
+      fill(150, 150, 200);
+      rect(pt-10, selectorPosY, 20, 15);// ellipses stand
       //YEARS
       fill(colorsHistory[5]);
       textAlign(CENTER);
-      textSize(14);
-      text(periodDictatorship[i][0], pt, y + 35);
+      textSize(12);
+      text(periodDictatorship[i][0], pt, selectorPosY + 55); // TEXT YEARS BOTTOM SELECTOR
     }
   }
 }//ENDS TIMELINE CLASS
