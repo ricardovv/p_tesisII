@@ -77,7 +77,14 @@ void timeLine() {
   rect(margenX, selectorPosY, 2024 - margenX*2, barH);
 
 //Moving indicatorPeriod
-  rect(movingIndicatorPeriodX, selectorPosY+barH, 10, barH);//element that moves
+  pushMatrix();
+    beginShape();
+      vertex(70+movingIndicatorPeriodX, 0+selectorPosY+barH);
+      bezierVertex(movingIndicatorPeriodX+50,0+selectorPosY+barH,   movingIndicatorPeriodX+0,0+selectorPosY+barH,   movingIndicatorPeriodX+0,70+selectorPosY+barH );
+      bezierVertex(0+movingIndicatorPeriodX,0+selectorPosY+barH,   -50+movingIndicatorPeriodX,0+selectorPosY+barH,   -70+movingIndicatorPeriodX,0+selectorPosY+barH);
+    endShape();
+  popMatrix();
+//  rect(movingIndicatorPeriodX, selectorPosY+barH, 10, barH);//element that moves
 
 //SELECTOR MOVE. small square. Once corrected the dates, use this
    fill(colorsHistory[4]);
