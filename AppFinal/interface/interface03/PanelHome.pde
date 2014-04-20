@@ -63,6 +63,15 @@ void buttonsHome(int _x, int _y, String _t) {
     else {
       //      onOver = 0;
     }    //close if mousePressed
+
+//SELECT DESTINY
+  if (_t == "Explore Topics") {
+    if (mousePressed) {
+      panel = 2;
+    }
+  }
+    
+    
   }//close if found
 
 

@@ -28,7 +28,7 @@ String filename = "test.csv";
 Table rawData;
 
 // PANELS
-int panel = 3;
+int panel = 2;
 
 //DATA TO BE PARSED
 String[] panelInfo;//PANEL INFO TEXT CONTENT
@@ -100,3 +100,12 @@ void showText() {
   text("CONTENT- " + articleContent, 0, 60, 400, 400);
 }
 
+
+void myText(int _x, int _y, int _textSize, String _textAlign, color _textColor, String _textContent ) {
+pushMatrix();
+  fill(_textColor);
+  textAlign(CENTER);
+  textSize(_textSize);
+  text(_textContent, 0+_x, 0+_y);
+ popMatrix();
+}
