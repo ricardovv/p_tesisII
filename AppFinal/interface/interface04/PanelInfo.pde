@@ -1,17 +1,20 @@
 // hacer clases botones panel
 
-void panelInfo() {
+void panelInfo(float _infoY) {
   rectMode(CORNER);
   //Background
   int infoW = w - gridUnit*4;
   int infoH = h - gridUnit*4;
+  float infoYAll = _infoY;
   
+  pushMatrix();
+  translate(0, infoYAll);
   //CAJA 1
-  fill(0, 0, 100);
+  fill(0, 150);
   noStroke();  
   rect(0, gridUnit*3, w, h);
 
-  //CAJA 2
+  //CAJA BG TRANSPARENT
   int infoX = gridUnit*2;
   int infoY = gridUnit*6;
   fill(0, 0, 200);
@@ -38,9 +41,22 @@ void panelInfo() {
   textSize(14);
   text("MOTIVATION\n" + panelInfo[0], textPosX, textPosY+gridUnit*2, textW, 400);
   text("CREDITS\n" + panelInfo[1], textPosX, textPosY+gridUnit*6, textW, 400);
-  text("OTHER\n" + panelInfo[2], textPosX, textPosY+gridUnit*12, textW, 400);
+  text("SOURCES\n" + panelInfo[2], textPosX, textPosY+gridUnit*12, textW, 400);
 
   //TITLE ON TOP
-  panelTitles("INFO AZUL");
+//  panelTitles(INFO AZUL");
+
+
+  if (panelInfoUp) {
+    panelInfoY = lerp(panelInfoY, 0, .12);
+  }
+  else {
+    panelInfoY = lerp(panelInfoY, 800, .12);
+  }
+  popMatrix();
+  //TEXT PANET UP AND DOWN
+  butCircleCloseTextInfo.display(panelInfoY);
+
+
 }
 

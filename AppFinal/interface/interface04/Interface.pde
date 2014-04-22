@@ -92,15 +92,21 @@ void buttonsTop(int _x, int _y, String _t) {
       //test buttons to load HOME
       if (_t == "C") { // load HOME
         panel = 1;
+        panelInfoUp = false;//close info panel if is open
       }
       if (_t == "T") { // load TOPICS
         panel = 2;
+        panelInfoUp = false;//close info panel if is open
       }
       if (_t == "H") { // load HISTORY
         panel = 3;
+        panelInfoUp = false;//close info panel if is open
+
       }
       if (_t == "I") { // load INFO
-        panel = 4;
+//        panel = 4;
+          panelInfoUp = true;
+
       }
     }
     else {
@@ -114,7 +120,13 @@ void buttonsTop(int _x, int _y, String _t) {
   fill(colorsBg[0]);
   textSize(26);  
   textAlign(CENTER);
+if(_t == "C"){
+  shape(logo, 5 + _x, 15+_y, 380, 320);
+}else{
   text(_t, 32 + _x, 38+_y);
+
+}
+
 }//END BUTTONS
 
 

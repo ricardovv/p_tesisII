@@ -8,7 +8,6 @@ void panelHome() {
   int panelHomeH = h;
   int panelHomeX = 0;
   int panelHomeY = 0;
-
   noStroke();
   //Blue box
   fill(colorsBg[0]);
@@ -18,18 +17,18 @@ void panelHome() {
   rect(gridUnit, gridUnit, panelHomeW-gridUnit*2, panelHomeH-gridUnit*2);
 
   //TEXT TITLE
+  shape(logo, panelHomeW/2-70, gridUnit*5);
   fill(255);
   textAlign(CENTER);
   textFont(fontTitles);
   textSize(80);
-  text("THE CONSTITUTION", panelHomeW/2, panelHomeH/2-160);
+  text("THE CONSTITUTION", panelHomeW/2, gridUnit*13);
   textSize(25);
-  text("Visual Exploration Trough Chilean Current Contitution", panelHomeW/2, panelHomeH/2-110);
+  text("Visual Exploration Trough Chilean Current Contitution", panelHomeW/2, gridUnit*14+50);
 
   buttonsHome(250, panelHomeH-200, "Explore Topics");
   buttonsHome(540, panelHomeH-200, "Explore History");
   questions(panelHomeX, panelHomeH/2+20, 1);
-
 } //panelHome ends
 
 
@@ -55,7 +54,7 @@ void buttonsHome(int _x, int _y, String _t) {
     onOver = color(250, 250, 150);
   }    //close if mousePressed
 
-//check if there is a specific rect available.
+  //check if there is a specific rect available.
   if (foundBottonHome >=0) {
     if (mousePressed) {
       onOver = color(255, 255, 0);
@@ -64,14 +63,15 @@ void buttonsHome(int _x, int _y, String _t) {
       //      onOver = 0;
     }    //close if mousePressed
 
-//SELECT DESTINY
-  if (_t == "Explore Topics") {
+    //SELECT DESTINY
     if (mousePressed) {
-      panel = 2;
-    }
-  }
-    
-    
+      if (_t == "Explore Topics") {
+        panel = 2;
+      }
+      if (_t == "Explore History") {
+        panel = 3;
+      }
+    }//MOUSE PRESSED END
   }//close if found
 
 
@@ -88,7 +88,6 @@ void buttonsHome(int _x, int _y, String _t) {
   rectMode(CORNER);
   popMatrix();
 }//END BUTTONS 
-
 
 
 
