@@ -18,11 +18,13 @@ void panelTopics() {
   //VISUALIZATION STRUCTURE
   menuTopics(menuX, menuY);
   //TEXT PANEL WITH CONTENTS
-  textContentPanel();
   //FROM FORLOOPDISTRIBUTION08
   visualizationLabels( gridUnit*47, gridUnit*34 );
   chaptersTopDisplay();
   articlesDisplayBoxes();
+  //Boxes to be opened on click article
+//  textContentPanel(articleTextPanelY)
+textContentPanel(articleTextPanelY);
 
 }//panelTopics ENDS
 
@@ -95,13 +97,13 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
         //Check button to highlight articles boxes
         for(int i=0; i<articlesCategoryHighligth.length;i++){
           if (myI+1 == articlesCategoryHighligth[i]) { // check myI & categories are equal, myI+1 to avoid 0
-             boxOn = true;
+             boxOn[i] = true;
           }             
         }//close forloop 
         
      }else {
        onOver = 70;
-       boxOn = false;
+       boxOn[myI] = false;
      }//close if mousePressed
   }//close if found
 //  rectMode(CORNERS);
@@ -118,41 +120,51 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
 
 
 //8-PANEL THAT UPS WITH TEXT WHEN CALLED - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-void textContentPanel() {
+void textContentPanel(float _y) {
   //TEXT PANEL  
 //  int textPanelX = topicW + visualW; // previous
 //  int textPanelY = topicY;//Same posiiton from top than panel topics
 //  int textPanelW = gridUnit * 20;  
 //  int textPanelH = panelH;
   int textPanelX = gridUnit*3;  
-  int textPanelY = gridUnit*7;//Same posiiton from top than panel topics
+  float textPanelY = _y;//Same posiiton from top than panel topics
   int textPanelW = gridUnit * 45;  
   int textPanelH = h - gridUnit*8;
 
   //TEXT PANEL
   pushMatrix();
   //  translate(0, mouseY);
-    translate(0, h-10);//Initial position Text Panel
+    translate(0, textPanelY);//Initial position Text Panel
     noStroke();
     //BG BLACK TRANSLUCENT  
     fill(20, 175);
-    rect(0, textPanelX, w, h);
+    rect(0, 40, w, h);
     //BG BOX CONTENT
     fill(55, 65, 80);
     rect(textPanelX, textPanelY, textPanelW, textPanelH);
     //BG TEXT TOP
     fill(25, 35, 50);
     rect(textPanelX, textPanelY, textPanelW, gridUnit*5);
-    myText(textPanelX+gridUnit*5, textPanelY+40, 20, "CENTER", 255, "ARTICLE 93"); 
+//    myText(textPanelX+gridUnit*5, textPanelY+40, 20, "CENTER", 255, "ARTICLE 93"); 
     //CLOSE BUTTON
     fill(50, 140, 250);
     ellipse(textPanelW+30, textPanelY+30, 40, 40);
-    myText(textPanelW+31, textPanelY+33, 14, "CENTER", 255, "close"); 
+  //  myText(textPanelW+31, textPanelY+33, 14, "CENTER", 255, "close"); 
     //TEXT MAIN CONTENT
     textAlign(LEFT);
     textSize(14);
     text("MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT, MAIN TEXT",
     textPanelX+440, textPanelY+gridUnit*6, 420, 500);  
+    
+//Ckec if panel is upor not    
+      if (articleTextPanelUp == true) {
+    articleTextPanelY = lerp(textPanelY, 40, .12);
+  }
+  else {
+    articleTextPanelY = lerp(textPanelY, 800, .12);
+  }
+
+    
   popMatrix();
 }//CLOSE X-PANEL THAT UPS WITH TEXT WHEN CALLED - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
 
@@ -275,7 +287,7 @@ void articlesDisplayBoxes(){
     //DRAW BOXES
     //    rect( newPosX ,articlesPosY[i] ,articleBoxW-sep*5, bH[i]-sep );
 
-    if(boxOn == false){//change state from category button
+    if(boxOn[i] == false){//change state from category button
       fill(190);
     }else{
       fill(250);
@@ -290,6 +302,11 @@ void articlesDisplayBoxes(){
    for(int i=0; i<articlesLengthCategory.length; i++){
      if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
         articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "XXXXARTICLES Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
+       
+       //change state of text panel
+        if(mousePressed){
+         articleTextPanelUp = !articleTextPanelUp;
+        }
      } 
    } //CLOSE SHOW DETAILS ON ROLLOVERS
 
