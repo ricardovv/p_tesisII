@@ -2,7 +2,7 @@
 
 
 //VARIABLES TIMELINE KEEP IT IN MAIN STRIUCTUE
-PImage guia; // image bg 
+//PImage guia; // image bg 
 PImage[] imgsTimeLine = new PImage[10];
 
   int lado = 30;//dimensions box and timeline, borders?
@@ -31,7 +31,7 @@ PImage[] imgsTimeLine = new PImage[10];
 
 void setup() {
   size(2024, 768);
-  guia = loadImage("imgs/guia.jpg");//imagen bg
+//  guia = loadImage("imgs/guia.jpg");//imagen bg
  
   //IMAGES TIMELINE
   for ( int i = 0; i < imgsTimeLine.length; i++ ) {
@@ -48,7 +48,7 @@ void draw() {
   // BG IMage reference
   if (keyPressed == true) {
     tint(255, 100);
-    image(guia, 0, 0);
+//    image(guia, 0, 0);
   }
 
 }//CLOSE DRAW

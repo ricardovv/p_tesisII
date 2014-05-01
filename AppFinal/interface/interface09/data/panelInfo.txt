@@ -1,0 +1,2 @@
+0I made this because it was necessary for bridge the gap between people and socially important texts such as the Constitution. 1This project was made as part of a thesis project of Ricardo Vega at MFA Design & Technology program at Parsons The New School for Design. This prototype was created using Processing. The translation used was the one provided at The Constitute Project. 
+2Ricardo L. Vega M. - New York, May 2014 - ricadov.cl
