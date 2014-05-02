@@ -1,15 +1,16 @@
 void myNavs() {
   //grid();
   navBarTop();
-  textPressed();
 }
 
 
-void navBarTop() {//Beacground of nav bar top in sectionsx`
+//MAIN NAVIGATION TOP - - - - - - - - - - - - - - - - - - - - - - - - - 
+void navBarTop() {//Bacground of nav bar top in sectionsx`
   noStroke();
-  fill(colorsBg[0], 200);//color bg orange
   rectMode(CORNER);
-  rect(0, gridUnit*2, gridUnit*8, gridUnit*2);//color bg orange
+//BART TOP TO HIDE TEXT SCROLL
+  fill(colorsBg[2]);//color bg orange
+  rect(0, 0, w, gridUnit*2);//color bg orange
   //Button1
   buttonsTop(0, 0, "C");
   //Button2
@@ -18,7 +19,7 @@ void navBarTop() {//Beacground of nav bar top in sectionsx`
   buttonsTop(gridUnit*4, 0, "H");
   //Button4
   buttonsTop(w-gridUnit*2, 0, "i");
-}//CLOSE navBarTop
+}//MAIN NAVIGATION TOP CLOSE - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
 
@@ -39,13 +40,8 @@ void panelTitles(String _title) {
 
 
 
-
-
-
-
-
 //PANEL QUESTIONS - - - - - - - - - - - - - - - 
-void questions (int _x, int _y, int _panel) {
+void questions (int _x, int _y, int _section) {
   //Dirferent Questiojs for each panel
   String[] questionsHome = {
     "QuestionHome 0", "QuestionHome 1", "QuestionHome 2", "QuestionHome 3", "QuestionHome 4"
@@ -84,57 +80,21 @@ void questions (int _x, int _y, int _panel) {
   textSize(14);  
   textAlign(CENTER);
   //Select specific question to show
-  if (_panel == 1) {
+  if (_section == 1) {
 //    textAlign(CENTER);
     text(questionsHome[counter], w/2, questionsTextY-15);
   }  
-  if (_panel == 2) {
+  if (_section == 2) {
     text(questionsTopics[counter], w/2, questionsTextY);
   }  
-  if (_panel == 3) {
+  if (_section == 3) {
     text(questionsHistory[counter], w/2, questionsTextY);
   }  
-  if (_panel == 4) {
+  if (_section == 4) {
     text(questionsInfo[counter], questionsTextX, questionsTextY);
   }  
   popMatrix();
 }//PANEL QUESTIONS ENDS 
 
 
-
-
-
-
-
-
-
-// TO ELIMINATE???
-void textPressed() {//may be eliminated? just to teschanges among panels 
-  if (keyPressed) {
-    if (key == '1') {
-      stroke(250);
-      textSize(30);
-      text("1 is pressed", 500, 25);
-      panel = 1;
-    }// close key 1
-    if (key == '2') {
-      stroke(250);
-      textSize(30);
-      text("2 is pressed", 500, 25);
-      panel = 2;
-    }// close key 2
-    if (key == '3') {
-      stroke(250);
-      textSize(30);
-      text("3 is pressed", 500, 25);
-      panel = 3;
-    }// close key 3
-    if (key == '4') {
-      stroke(250);
-      textSize(30);
-      text("4 is pressed", 500, 25);
-      panel = 4;
-    }// close key 3
-  }//close keyPressed
-}//CLOSE textPressed
 

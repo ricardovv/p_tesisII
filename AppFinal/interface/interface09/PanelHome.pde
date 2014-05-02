@@ -1,6 +1,6 @@
-//
 
-void panelHome() {
+//void panelHome() {
+void sectionHome() {
   rectMode(CORNER);  //titles
 
   //Background
@@ -66,10 +66,10 @@ void buttonsHome(int _x, int _y, String _t) {
     //SELECT DESTINY
     if (mousePressed) {
       if (_t == "Explore Topics") {
-        panel = 2;
+        section = 2;
       }
       if (_t == "Explore History") {
-        panel = 3;
+        section = 3;
       }
     }//MOUSE PRESSED END
   }//close if found

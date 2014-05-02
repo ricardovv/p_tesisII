@@ -1,6 +1,7 @@
 //1- BUTOTN CIRCLE CLASS
 //2- MAIN NAV BUTTONS AT THE TOP  
-//3- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
+//3- BUTTONS CIRCLE CLOSE PANEL & TEXT SCROLL - - - - - - - - - - - - - - - - - - - - - - - - 
+//4- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
   
   
 //1- BUTOTN CIRCLE CLASS - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -32,13 +33,29 @@ int newY;
 
   //METHODS
   //CHECK IF IS OVER OR NOT
-  void display(float _y) {
+  void display(float _y, String _buttonName) {
+      String buttonName = _buttonName; 
+    
       newY = int(_y);//to track changes in Y position 
     //update 
     if ( overCircle(circX, circY+newY, circSize) ) {
       botOver = true;
-    } 
-    else {
+     
+     //CHECK WHICH CIRCLE BUTTON INFO OR ARTICLETEXT - THEN CHANGE BOOLEAN TO true
+            if (buttonName == "info") { 
+                fill(200, 0, 0);                rect(300, 00, 900,300);
+                panelInfoOver = true;//check overfor circle button on panelInfo
+            }else{
+                panelInfoOver = false; 
+            }
+            if (buttonName == "articletext") { 
+                textBoxOver = true;//check overfor circle button on article scrolltext
+            }else{
+                textBoxOver = false; 
+            }
+     //CHECK CLOSE WHICH CIRCLE BUTTON INFO OR ARTICLETEXT - THEN CHANGE BOOLEAN TO true
+
+    } else {
       botOver = false;
     }//end update 
       //change color button and state
@@ -46,29 +63,19 @@ int newY;
       if (mousePressed == true) {         
         botCurrentColor = botColorPressed;
         //select button
-        if (text == "close") { 
-          textBoxUp = false;
-          articleTextPanelUp = false;
-        //  panelInfoUp = false;
-        }
-        if (text == "open") { 
+
+
+//THIS IS NOT USEFUL IF MOUSERELEASED WORKS - - - - -
+    //        if (text == "close") { 
+    //          textBoxUp = false;
+    //        articleTextPanelUp = false;
+    //      }
+    //    if (text == "open") { 
           //textBoxUp = true;
-          articleTextPanelUp = true;
+    //      articleTextPanelUp = true;
           //panelInfoUp = false;
-        }
-
-//      //JUST FOR THE INFO PANEL
-//      if(panelInfoUp) {
-//        if (text == "close") { 
-//          panelInfoUp = false;
-//        }
-//        else if(text == "open") { 
-//          panelInfoUp = true;
-//        }
-//      }//CLOSE JUST FOR PANEL
-
-
-
+    //    //}
+//THIS IS NOT USEFUL IF MOUSERELEASED WORKS - - - - -    
     } else {
         botCurrentColor = botColorOver;
       }//mousePressed end
@@ -122,20 +129,19 @@ void buttonsTop(int _x, int _y, String _t) {
       //rect(x1, y1, x2, y2);//select the specific rect founded
       //test buttons to load HOME
       if (_t == "C") { // load HOME
-        panel = 1;
+        section = 1;
         panelInfoUp = false;//close info panel if is open
       }
       if (_t == "T") { // load TOPICS
         //TITLES AT THE TOP
-        panel = 2;
+        section = 2;
         panelInfoUp = false;//close info panel if is open
       }
       if (_t == "H") { // load HISTORY
-        panel = 3;
+        section = 3;
         panelInfoUp = false;//close info panel if is open
       }
-      if (_t == "i") { // load INFO
-        //        panel = 4;//this info panel loads differently now. 
+      if (_t == "i") { // load INFO  
         panelInfoUp = !panelInfoUp;
       }
     } 
@@ -159,22 +165,41 @@ void buttonsTop(int _x, int _y, String _t) {
 
 
 
-//3- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
-void textBox(float _posX, float _posY) {
-  float  posX = _posX;
-  //  float posY =_posY;
-  if (textBoxUp) {
-    textBoxPosY = lerp(textBoxPosY, 100, .1);
+//3- BUTTONS CIRCLE CLOSE PANEL & TEXT SCROLL - - - - - - - - - - - - - - - - - - - - - - - - 
+void mouseReleased() { 
+  //PANEL INFO
+  if(panelInfoOver){  
+    if(panelInfoUp == false) {panelInfoUp = true;} else {panelInfoUp = false;}
   }
-  else {
-    textBoxPosY = lerp(textBoxPosY, 600, .1);
+  //PANEL INFO CLOSE
+  //PANEL ARTICLE TEXT SCROLL 
+  if(textBoxOver){
+    if(articleTextPanelUp == false) {articleTextPanelUp = true;} else {articleTextPanelUp = false;}
   }
-  pushMatrix();
-//      panelInfo(0);
-  rect(0, 0, 400, 200);
-  popMatrix();
-}//CLOSE textBox
-//3- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
+  //PANEL ARTICLE TEXT SCROLL 
+
+}//3- CLOSE BUTTONS CIRCLE CLOSE PANEL & TEXT SCROLL - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+
+
+
+
+////4- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
+//void textBox(float _posX, float _posY) {
+//  float  posX = _posX;
+//  //  float posY =_posY;
+//  if (textBoxUp) {
+//    textBoxPosY = lerp(textBoxPosY, 100, .1);
+//  }
+//  else {
+//    textBoxPosY = lerp(textBoxPosY, 600, .1);
+//  }
+//  pushMatrix();
+//  rect(0, 0, 400, 200);
+//  popMatrix();
+//}//CLOSE textBox
+////4- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
 

@@ -53,7 +53,7 @@ void panelInfo(float _infoY) {
     }
   popMatrix();
   //TEXT PANET UP AND DOWN
-  butCircleCloseTextInfo.display(panelInfoY);
+  butCircleCloseTextInfo.display(panelInfoY, "info");
 
 }
 

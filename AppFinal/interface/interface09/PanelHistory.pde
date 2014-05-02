@@ -1,5 +1,6 @@
+//void panelHistory() {
 
-void panelHistory() {
+void sectionHistory() {
   int historyW = w;
   int historyH = h - gridUnit*3;
   //Topic Panel position 

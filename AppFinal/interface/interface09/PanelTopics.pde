@@ -9,9 +9,7 @@ void panelTopics() {
   int menuY = gridUnit*4;//position from top
   //IMPORTANT
   rectMode(CORNER);
-  //sans font w createFont
-  textFont(fontBodyText);
-
+  textFont(fontBodyText);  //sans font w createFont
 
   //QUESITONS AT THE TOP
   questions(gridUnit*8, gridUnit*0, 2);
@@ -23,8 +21,7 @@ void panelTopics() {
   chaptersTopDisplay();
   articlesDisplayBoxes();
   //Boxes to be opened on click article
-//  textContentPanel(articleTextPanelY)
-textContentPanel(articleTextPanelY);
+  textContentPanel(articleTextPanelY);
 
 }//panelTopics ENDS
 
@@ -58,19 +55,15 @@ void menuTopics(int _x, int _y){
     text("SELECT TOPICS", menuTopicX+20, menuTitleY+15);//TITLE TEXT
 
   //A - MENU TOPICS - TEXT AND BOX
-  for (int i=0; i<24; i++) {
-    fill(30, 40, 50);
+  for (int i=0; i<25; i++) {
     stroke(colorsBg[2]+150);    //bg cajas de cada topic
 //    rect(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, menuItemW, menuItemH ); //Each box for category text
 //    fill(170);
  //   textSize(12);
   //  text("Name of Category "+i, menuTopicX+20, menuTitleY+menuTitleH+menuItemH*i + 8);//Each category text
-
-//  articlesButtonsCategories(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, "button n"+i);
-  articlesButtonsCategories(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, menuItemW, menuItemH, i, "Category n"+i);
+  articlesButtonsCategories(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, menuItemW, menuItemH, i, topicsCategoryNames[i]);
 
   }//end for
-  
 }
 //7- MenuTOPICS CLOSE - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -84,7 +77,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
   int bW = _w;
   int bH = _h;
   int found = -1;
-  int onOver = 50;
+  int onOver = 30;
   String text = _t;
   int myI = _i; 
   //check mouse over
@@ -93,7 +86,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
   }
   if (found >=0) {//check if there is a specific rect available.
     if (mousePressed) {
-     // onOver = 100;
+      onOver = 70;
         //Check button to highlight articles boxes
         for(int i=0; i<articlesCategoryHighligth.length;i++){
           if (myI+1 == articlesCategoryHighligth[i]) { // check myI & categories are equal, myI+1 to avoid 0
@@ -102,7 +95,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
         }//close forloop 
         
      }else {
-       onOver = 70;
+       onOver = 50;
        boxOn[myI] = false;
      }//close if mousePressed
   }//close if found
@@ -167,7 +160,7 @@ void chaptersTopDisplay(){
       }
     //BOX VIS ARTICLE TOP ROLLOVER
     if (  (mouseX>boxChapterX && mouseX<boxChapterX+articleBoxW-sep*5)  &&  (mouseY>boxChapterY && mouseY<boxChapterY+boxChapterH)  ) {
-      chapterDetailsOverVisualization( mouseX, visualPosY, chaptersTitle[i], "Brief description about the current chapter. Brief description about the current chapter. " );
+      chapterDetailsOverVisualization( mouseX, visualPosY, chaptersTitle[i], chaptersDescriptions[0]);
     }
   }//close for
 }//2- BOXES CHAPTERS TOP - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -180,6 +173,15 @@ void chapterDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
   int boxPosX = -boxW/2;
   int dis = 4;
   noStroke();
+
+//To avoid the details go out of screen
+  if(mouseX>w-180){
+    boxPosX = boxPosX-100;
+  }
+  if(mouseX<320){
+    boxPosX = boxPosX+100;
+  }
+
   pushMatrix();
     translate(_newPosBoxX, visualPosY-90);    //CHECK IF IS BEYOND WIDTH
     //TRIANGLE BELOW GRIS
@@ -222,16 +224,9 @@ void articlesDisplayBoxes(){
         posY[i+1] = posY[i]+bH[i];  
       }//close if 
     }//CLOSE FOR 2
-    //STORE NEW POSITIONS
-//    newPosX = visualPosX + articleBoxW*countToRight;
-//    newPosY = visualPosY + posY[i] + sep;
-//    articlesPosX[i] = int(newPosX) ;
-//    articlesPosY[i] = int(newPosY) ;
     articlesPosX[i] = int(visualPosX + articleBoxW*countToRight);
     articlesPosY[i] = int(visualPosY + posY[i] + sep);
     //DRAW BOXES
-    //    rect( newPosX ,articlesPosY[i] ,articleBoxW-sep*5, bH[i]-sep );
-
     if(boxOn[i] == false){//change state from category button
       fill(190);
     }else{
@@ -246,11 +241,11 @@ void articlesDisplayBoxes(){
  //SHOW DETAILS ON ROLLOVERS
    for(int i=0; i<articlesLengthCategory.length; i++){
      if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
-        articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "XXXXARTICLES Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
-       
+        articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
        //change state of text panel
         if(mousePressed){
- //        articleTextPanelUp = !articleTextPanelUp;
+//         articleTextPanelUp = !articleTextPanelUp;
+         articleTextPanelUp = true;
         }
      } 
    } //CLOSE SHOW DETAILS ON ROLLOVERS
@@ -258,10 +253,13 @@ void articlesDisplayBoxes(){
 }//4- CLOSE DISPLAY CHAPTER BOXES - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
+
+
+
 //5- DETAILS OVER ARTICLES BELLOW - on articlesDisplayBoxes()- - - - - - - - - - - - - - - 
 void articleDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, String _articleNumberText, int _articleWordsNum, String _articleTopics ) {  
-  int boxW = 175;
-  int boxH = 125;
+  int boxW = 230;
+  int boxH = 110;
   int boxPosX = 0;
   int moveX = -120;
   int dis = 2;
@@ -290,11 +288,11 @@ void articleDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
     fill(50);
     textSize(14);
     textAlign(LEFT);
-    text("Article nº "+_articleNumberText, boxPosX+8, 6, boxW-15, boxH-12 );
+    text("Article nº "+_articleNumberText, boxPosX+8, 6, boxW-13, boxH-12 );
     textSize(10);
-    text("Words: "+_articleWordsNum, boxPosX+8, 35, boxW-15, boxH-1 );
-    text("Topics: "+_articleTopics, boxPosX+8, 55, boxW-15, boxH-15 );
-    text("click to view text", boxPosX+8, 105, boxW-15, boxH-15 );
+    text("Words: "+_articleWordsNum, boxPosX+8, 34, boxW-15, boxH-1 );
+    text("Topics: "+_articleTopics, boxPosX+8, 54, boxW-15, boxH-15 );
+    text("- click to view text", boxPosX+8, 90, boxW-15, boxH-15 );
   popMatrix();
 }//5- CLOSE DETAILS OVER ARTICLES BELLOW - on articlesDisplayBoxes() - - - - - - - - - - - - - - -  
 
