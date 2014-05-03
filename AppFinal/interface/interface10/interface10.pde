@@ -30,11 +30,28 @@ String[] articlesTitNumber = {
 /*"FIRST","SECOND","THIRTH","FOURTH","FIFTH","SIXTH","SEVENTH","EIGHT","NINTH","TENTH","ELEVENTH","TWELFTH","THIRTEENTH","FOURTEENTH","FIFTEENTH","SIXTEENTH","SEVENTEENTH","EIGHTEENTH","NINETEENTH","TWENTY","TWENTY FIRST","TWENTY SECOND","TWENTY THIRTH","TWENTY FOURTH","TWENTY FIFTH","TWENTY SIXTH"*/
 };
 
+//TOPIC TEXT SCROLL - - - - - - - - 
+String[] scrollArticlesAll;//CARGAR
+String scrollArticlesAllJoined;//JOIN IN ONE STRING 
+String[] scrollArticlesAllSplitted;//SPLIT IT BY A GIVEN SYMBOL 
+int scrollArticleSelected;//int articleNumToScroll; //SPECIFIC NUMBER TO PASS
+
+int totalNumCharac;//COUNT NUMMBR OF CHARACTERS
+
+int scrollW = 350;
+int scrollH;
+int scrollPosX = 320;
+int scrollPosY = 180; 
+
+int scrollTextSize = 12;
+int charPerLine = 50; 
+int artWords;
+int artTextLenght;
+int textScrollMapped;
+float scrollBoxConstrain;
+//TOPIC TEXT SCROLL CLOSE - - - - - - - - 
+
 //ARTICLES TO PARSE DATA TO SCROLL TEXT
-String[] articlesAll;
-String articlesAllJoined;
-String[] articlesAllSplitted;
-int articleNumToScroll;
 
 
 int[] articlesWordLength = {163,18,59,5,94,67,87,181,194,144,90,74,85,70,28,118,93,153,4209,84,219,82,104,84,140,287,152,178,326,162,34,818,84,61,61,26,104,111,103,49,252,173,171,210,93,105,49,37,61,80,38,238,790,547,569,79,47,279,154,81,469,178,31,532,267,449,104,234,93,68,175,196,24,131,76,77,197,257,575,68,217,64,64,277,127,163,180,136,62,97,21,23,435,1633,186,262,217,37,183,280,64,137,34,71,134,81,126,117,31,125,75,118,63,378,63,341,83,25,378,164,82,59,96,77,231,21,147,84,130,230,231,33,200,46,59,45,36,35,104,53,43,45,23,114,364,151,28,32,20,48,41,32,50,54,167,32,80};
@@ -61,24 +78,6 @@ float articleTextPanelY;// initial position
 
 // TOPICS CATEGORIES - 25 so far - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 String[] topicsCategoryNames = {"Privacidad","Category Name 2","Category Name 3","Category Name 4","Category Name 5","Category Name 6","Category Name 7","Category Name 8","Category Name 9","Category Name 10","Category Name 11","Category Name 12","Category Name 13","Category Name 14","Category Name 15","Category Name 16","Category Name 17","Category Name 18","Category Name 19", "Category Name 20", "Category Name 21", "Category Name 22", "Category Name 23", "Category Name 24","Category Name 25"}; 
-
-//TOPIC TEXT SCROLL - - - - - - - - 
-String[] scrollArticle;
-String scrollArticleJoined;
-int totalNumCharac;
-
-int scrollW = 350;
-int scrollH;
-int scrollPosX = 320;
-int scrollPosY = 180; 
-
-int scrollTextSize = 12;
-int charPerLine = 50; 
-int artWords;
-int artTextLenght;
-int textScrollMapped;
-float scrollBoxConstrain;
-//TOPIC TEXT SCROLL CLOSE - - - - - - - - 
 
 // CLOSE TOPICS ELEMENTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -147,7 +146,6 @@ void setup() {
   butCircleCloseTextTopic = new ButCircle(940, 160, 50, "close");
 
   //TOPIC SCROLL TEXT
-  articlesDataParser();//ARTICLES TO PARSE DATA TO SCROLL TEXT
   scrollTextIntial();
   //TOPIC TEXT SCROLL CLOSE - - - - - - - - 
 

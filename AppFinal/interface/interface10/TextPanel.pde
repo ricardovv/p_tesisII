@@ -69,21 +69,17 @@ void textContentPanel(float _textY) {
 
 
 
-//ARTICLES TO PARSE DATA TO SCROLL TEXT  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-void articlesDataParser(){
-  articleNumToScroll = 0;
-  articlesAll =  loadStrings("articles/articlesAll.txt");
-  articlesAllJoined = join(articlesAll, " ");
-  articlesAllSplitted = split(articlesAllJoined, "*");
-}//ARTICLES TO PARSE DATA TO SCROLL TEXT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-
-
-
-
 //SCROLL INITIAL VALUES - - - - - - - - - - - - - - - - - - - - - - -  
 void scrollTextIntial() {
-  scrollArticleJoined = join(scrollArticle, " ");
-  totalNumCharac = scrollArticleJoined.length();
+
+  scrollArticlesAll = loadStrings("articles/articlesAll.txt");//LOAD FILE
+  scrollArticlesAllJoined = join(scrollArticlesAll, " ");//CREATE 1 STRING
+  scrollArticlesAllSplitted = split(scrollArticlesAllJoined, "*");//SPLIT THE STRING BASED ON A CHARACTER
+  scrollArticleSelected = 0;// SETS INITIAL ARTICLE NUMBER TO SHOW 
+  
+  totalNumCharac = scrollArticlesAllJoined.length();
+
+//CALCULATE NUMBER OF WORDS TO LENGTH OF SCROLL
   boolean scrollOn = false;
   scrollBoxConstrain = scrollPosY+1;//initial value scroll box
   artWords = (totalNumCharac / charPerLine) *6 ;  
@@ -128,20 +124,8 @@ void scrollText(int _scrollBoxY) {
   rect(scrollPosX, scrollPosY, scrollW, scrollH);
   fill(180);
 //  text("HOLA HOLA HOLA FEO"+scrollArticleJoined, scrollPosX, scrollPosY+posYMapped, scrollW, scrollH+100);
-  text(articlesAllSplitted[articleNumToScroll], scrollPosX, scrollPosY+posYMapped, scrollW, scrollH+100);
+  text(scrollArticlesAllSplitted[scrollArticleSelected], scrollPosX, scrollPosY+posYMapped, scrollW, scrollH+100);
 
-      scrollArticle = loadStrings("articles/artText1.txt");
-    }
-    if (key == '2') {
-      scrollArticle = loadStrings("articles/artText2.txt");
-    }
-    if (key == '3') {
-      scrollArticle = loadStrings("articles/artText3.txt");
-    }
-    if (key == '4') {
-      scrollArticle = loadStrings("articles/artText4.txt");
-    }
-  }//IF KEY PRESSED
 }//END SCROLL GUI - - - - - - - - - - - - - - - - - - - - - - - 
 
 

@@ -23,6 +23,12 @@ void panelTopics() {
   //Boxes to be opened on click article
   textContentPanel(articleTextPanelY);
 
+//TEST WHICH TEXT IS LOADING IN THE SCROLL TEXT PANEL  
+textSize(60);
+fill(200);
+text(scrollArticleSelected, 200, 100);
+
+
 }//panelTopics ENDS
 
 
@@ -242,13 +248,17 @@ void articlesDisplayBoxes(){
    for(int i=0; i<articlesLengthCategory.length; i++){
      if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
         articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
+
+        scrollArticleSelected = i;
        //change state of text panel
         if(mousePressed){
-//         articleTextPanelUp = !articleTextPanelUp;
-         articleTextPanelUp = true;
+          //Select article to load in scroll panel
+          //articleTextPanelUp = !articleTextPanelUp;
+          articleTextPanelUp = true;
         }
      } 
    } //CLOSE SHOW DETAILS ON ROLLOVERS
+
 
 }//4- CLOSE DISPLAY CHAPTER BOXES - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 

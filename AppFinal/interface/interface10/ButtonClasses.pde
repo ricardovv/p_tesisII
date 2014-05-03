@@ -182,23 +182,3 @@ void mouseReleased() {   //PANEL INFO
 
 
 
-
-
-////4- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
-//void textBox(float _posX, float _posY) {
-//  float  posX = _posX;
-//  //  float posY =_posY;
-//  if (textBoxUp) {
-//    textBoxPosY = lerp(textBoxPosY, 100, .1);
-//  }
-//  else {
-//    textBoxPosY = lerp(textBoxPosY, 600, .1);
-//  }
-//  pushMatrix();
-//  rect(0, 0, 400, 200);
-//  popMatrix();
-//}//CLOSE textBox
-////4- TEXT BOX IN INFO SO FAR - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
-
