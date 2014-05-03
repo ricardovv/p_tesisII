@@ -34,66 +34,69 @@ int newY;
   //METHODS
   //CHECK IF IS OVER OR NOT
   void display(float _y, String _buttonName) {
-      String buttonName = _buttonName; 
+    String buttonName = _buttonName; 
+    newY = int(_y);//to track changes in Y position 
     
-      newY = int(_y);//to track changes in Y position 
     //update 
     if ( overCircle(circX, circY+newY, circSize) ) {
       botOver = true;
-     
-     //CHECK WHICH CIRCLE BUTTON INFO OR ARTICLETEXT - THEN CHANGE BOOLEAN TO true
-            if (buttonName == "info") { 
-                fill(200, 0, 0);                rect(300, 00, 900,300);
-                panelInfoOver = true;//check overfor circle button on panelInfo
-            }else{
-                panelInfoOver = false; 
-            }
-            if (buttonName == "articletext") { 
-                textBoxOver = true;//check overfor circle button on article scrolltext
-            }else{
-                textBoxOver = false; 
-            }
-     //CHECK CLOSE WHICH CIRCLE BUTTON INFO OR ARTICLETEXT - THEN CHANGE BOOLEAN TO true
+      //FOR PANEL INFO - CHANGE OVER STATE
+      if (panelInfoOver == true) { // load INFO  
+        panelInfoOver = false;//check overfor circle button on article scrolltext
+      }//close if button info
+      else if (panelInfoOver == false) {
+        panelInfoOver = true;//check overfor circle button on article scrolltext
+      }
+
+
+
+
+
+
+
+      //FOR TEXT SCROLL - CHANGE OVER STATE
+      if (textBoxOver == true) { // load INFO  
+        textBoxOver = false;//check overfor circle button on article scrolltext
+      }//close if button info
+      else if (textBoxOver == false) {
+        textBoxOver = true;//check overfor circle button on article scrolltext
+      }
+
+
+
+
+
+
 
     } else {
       botOver = false;
     }//end update 
+
+
       //change color button and state
     if (botOver) {
       if (mousePressed == true) {         
         botCurrentColor = botColorPressed;
-        //select button
-
-
-//THIS IS NOT USEFUL IF MOUSERELEASED WORKS - - - - -
-    //        if (text == "close") { 
-    //          textBoxUp = false;
-    //        articleTextPanelUp = false;
-    //      }
-    //    if (text == "open") { 
-          //textBoxUp = true;
-    //      articleTextPanelUp = true;
-          //panelInfoUp = false;
-    //    //}
-//THIS IS NOT USEFUL IF MOUSERELEASED WORKS - - - - -    
-    } else {
+      } else {//select button
         botCurrentColor = botColorOver;
       }//mousePressed end
     }//if (botOver) END
     else { 
       botCurrentColor = botColorNormal;
    }
-    //ELLIPSE BUTTON
-    fill(botCurrentColor); 
-    noStroke();
-    ellipseMode(CENTER);
-    ellipse(circX, circY+newY, circSize, circSize);//newY to track Y new posiiton when change true or false
-    //TEXT BUTTON
-    fill(250);
-    textAlign(CENTER); 
-    textSize(14);
-    text(text, circX, circY+4+newY);
-  }//DISPLAY END
+   
+   //ELLIPSE BUTTON
+   fill(botCurrentColor); 
+   noStroke();
+   ellipseMode(CENTER);
+   ellipse(circX, circY+newY, circSize, circSize);//newY to track Y new posiiton when change true or false
+   //TEXT BUTTON
+   fill(250);
+   textAlign(CENTER); 
+   textSize(14);
+   text(text, circX, circY+4+newY);
+  }//DISPLAY END  
+
   //CHECK IF IS INSIDE
   boolean overCircle(int x, int y, int diameter) {  
     float disX = x - mouseX;
@@ -105,8 +108,10 @@ int newY;
       return false;
     }
   }//overCircle
+
 }//ButCircle CLASS CLOSE
 //1- CLOSE BUTOTN CIRCLE CLASS - - - - - - - - - - - - - - - - - - - - - - - - 
+
 
 
 
@@ -119,11 +124,18 @@ void buttonsTop(int _x, int _y, String _t) {
   int y2 = _y + gridUnit*2;
   int found = -1;
   int onOver = colorsButton[0];
+  String titleButton = _t;
   //check mouse over
   if (mouseX>_x && mouseX<x2 && mouseY>y1 && mouseY<y2 ) {//if the mouse position is inside the specific rect. 
     found = 1;//select that specific rect
-  }
-  if (found >=0) {//check if there is a specific rect available.
+  } else{found = -1;}
+  //FOR PANEL INFO - CHANGE OVER STATE - TO panelInfoUp in mouseReleased - Also in the text panel as button circle
+  if (titleButton == "i") { 
+      if(found == 1){panelInfoOver = true;}        
+      if(found == -1){panelInfoOver = false;}    
+  }//close if button info
+  
+  if (found >=0) {//check if there is a specific rect available.    
     if (mousePressed) {
       onOver = 150;
       //rect(x1, y1, x2, y2);//select the specific rect founded
@@ -140,21 +152,22 @@ void buttonsTop(int _x, int _y, String _t) {
       if (_t == "H") { // load HISTORY
         section = 3;
         panelInfoUp = false;//close info panel if is open
-      }
-      if (_t == "i") { // load INFO  
-        panelInfoUp = !panelInfoUp;
-      }
-    } 
+      }      
+    }//close if (mousePressed)
     else {
       onOver = 80;
-    }    //close if mousePressed
-  }//close if found
+    }//close if mousePressed
+  
+
+}//close if found 
+  
   rectMode(CORNERS);
   fill(onOver);
   rect(x1, y1, x2-1, y2);
   fill(colorsBg[0]);
   textSize(20);  
   textAlign(CENTER);
+  //puts logo instead a letter in button to home
   if (_t == "C") {
     shape(logo, 5+_x, 10+_y, 240, 210);
   }
@@ -165,17 +178,55 @@ void buttonsTop(int _x, int _y, String _t) {
 
 
 
+
+
 //3- BUTTONS CIRCLE CLOSE PANEL & TEXT SCROLL - - - - - - - - - - - - - - - - - - - - - - - - 
 void mouseReleased() {   //PANEL INFO
-  if(panelInfoOver){  
-//    if(panelInfoUp == false) {panelInfoUp = true;} else {panelInfoUp = false;}
-  }
-  //PANEL INFO CLOSE
-  //PANEL ARTICLE TEXT SCROLL 
-  if(textBoxOver){
-  //  if(articleTextPanelUp == false) {articleTextPanelUp = true;} else {articleTextPanelUp = false;}
-  }
-  //PANEL ARTICLE TEXT SCROLL 
+  
+//  //PANEL INFO BUTTON - button in buttons top and paneltextScroll
+// if(panelInfoOver == true){ //chek if buton is over
+//      //check if panel is up or not
+//      panelInfoUp = !panelInfoUp;
+//  } //PANEL INFO BUTTON CLOSE
+
+  //PANEL INFO BUTTON - button in buttons top and paneltextScroll
+ if(panelInfoOver == true){ //chek if buton is over
+
+     if(panelInfoUp == true){  
+          panelInfoUp = false;
+      }  
+      else if(panelInfoUp == false) {
+          panelInfoUp = true;
+      }
+
+  } //PANEL INFO BUTTON CLOSE
+
+
+
+
+  //PANEL INFO BUTTON - button in buttons top and paneltextScroll
+ if(textBoxOver == true){ //chek if buton is over
+
+     if(textBoxUp == true){  
+          textBoxUp = false;
+      }  
+      else if(textBoxUp == false) {
+          textBoxUp = true;
+      }
+
+  } //PANEL INFO BUTTON CLOSE
+
+
+
+//  //PANEL TEXT SCROLL BUTTON - button in buttons top and paneltextScroll
+// if(textBoxOver == true){ //chek if buton is over
+//      //check if panel is up or not
+//      textBoxUp = !textBoxUp;
+//  } //PANEL INFO BUTTON CLOSE
+
+
+
+
 
 }//3- CLOSE BUTTONS CIRCLE CLOSE PANEL & TEXT SCROLL - - - - - - - - - - - - - - - - - - - - - - - - 
 

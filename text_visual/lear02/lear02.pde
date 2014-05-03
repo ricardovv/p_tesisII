@@ -2,7 +2,7 @@
 // Example 18-6: Analyzing King Lear
 
 String[] kinglear;// all of the text
-int counter = 0;// where starts in the text 
+int[] counter;// where starts in the text 
 String delimiters = " ,.?!;:[]"; //delimiters
 
 void setup() {
@@ -13,6 +13,7 @@ void setup() {
   String[] rawtext = loadStrings(file);
   String everything = join(rawtext, "" );    // Join file array in one long string
   kinglear = splitTokens(everything,delimiters);   //All lines joined one String >> split up array individual words. 
+  counter[] = new int[everything.length];
   frameRate(5);
   textSize(9);
   textAlign(RIGHT);

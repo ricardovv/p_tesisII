@@ -24,12 +24,12 @@ void textContentPanel(float _textY) {
     rect(0, gridUnit*2, w, h);//position rect BG 
     textFont(fontBodyText);
 
-    //BG 1
-    if (articleTextPanelUp == false) {
-      articleTextPanelY = lerp(articleTextPanelY, 800, .12);
+    //PANEL TEXT ARTICLES UP
+    if (textBoxUp == false) {
+      textBoxPosY = lerp(textBoxPosY, 800, .12);
     }
     else {
-      articleTextPanelY = lerp(articleTextPanelY, 0, .12);
+      textBoxPosY = lerp(textBoxPosY, 0, .12);
     }
   
     //BG BoxTEXT
@@ -48,14 +48,14 @@ void textContentPanel(float _textY) {
     //TITLES TEXT ATICLE PANEL
     fill(200);
     textAlign(LEFT);  textSize(20);
-    text("ARTICLE N XX", textPosX, textPosY, textW, 400);  
+    text("ARTICLE Nº "+articlesTitNumber[scrollArticleSelected], textPosX, textPosY, textW, 400);  
     //TITLE TOPICS
     textSize(12);
     text("Topics: ", textPosX, textPosY+25, textW/2, 400);
   //  text("Tools: " + panelArticleDetailTest[1], textPosX, textPosY+gridUnit*4, textW/2, 400);
   
     //TEXT PANET UP AND DOWN
-    butCircleCloseTextTopic.display(articleTextPanelY-40, "articletext");
+    butCircleCloseTextTopic.display(textBoxPosY-40, "articletext");
     //TOOLS
     textTools(infoX, infoY);
     //FEEDBACK 
@@ -123,7 +123,7 @@ void scrollText(int _scrollBoxY) {
   fill(10, 0); 
   rect(scrollPosX, scrollPosY, scrollW, scrollH);
   fill(180);
-//  text("HOLA HOLA HOLA FEO"+scrollArticleJoined, scrollPosX, scrollPosY+posYMapped, scrollW, scrollH+100);
+  //THIS IS TO LOAD TEH TEXT IN THE SCROLL PANEL
   text(scrollArticlesAllSplitted[scrollArticleSelected], scrollPosX, scrollPosY+posYMapped, scrollW, scrollH+100);
 
 }//END SCROLL GUI - - - - - - - - - - - - - - - - - - - - - - - 

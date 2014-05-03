@@ -21,7 +21,7 @@ void panelTopics() {
   chaptersTopDisplay();
   articlesDisplayBoxes();
   //Boxes to be opened on click article
-  textContentPanel(articleTextPanelY);
+  textContentPanel(textBoxPosY);
 
 //TEST WHICH TEXT IS LOADING IN THE SCROLL TEXT PANEL  
 textSize(60);
@@ -215,6 +215,7 @@ void chapterDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
 //4- DISPLAY ARTICLES  - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 void articlesDisplayBoxes(){
   //  posY[0] = 0;//starting at...
+  int foundOverBox = -1;
   
   //1- ASSIGN VALUES
   for(int i=0; i<articlesLengthCategory.length; i++){
@@ -244,20 +245,61 @@ void articlesDisplayBoxes(){
     text(articlesTitNumber[i], 2+articlesPosX[i], articlesPosY[i]+8);
   }//CLOSE FOR 1- ASSIGN VALUES
 
+
+
+/*
  //SHOW DETAILS ON ROLLOVERS
    for(int i=0; i<articlesLengthCategory.length; i++){
      if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
         articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
+        //SELECT NUMNER OF ARTOCLE TO LOAD
+        scrollArticleSelected = i;   
+        //Change state of overbutotns 
+        foundOverBox = 1;
+        //boxOver[i] = true;
+  //TEST IF IS OVER
+     textSize(40);fill(200);
+     text("textBoxOver; "+foundOverBox, 500, 90);
 
-        scrollArticleSelected = i;
-       //change state of text panel
-        if(mousePressed){
-          //Select article to load in scroll panel
-          //articleTextPanelUp = !articleTextPanelUp;
-          articleTextPanelUp = true;
-        }
+     } else {
+        foundOverBox = 0;
+  //TEST IF IS OVER
+     textSize(40);fill(200);
+     text("textBoxOver; "+foundOverBox, 500, 90);
+      }
+*/
+
+ //SHOW DETAILS ON ROLLOVERS
+   for(int i=0; i<articlesLengthCategory.length; i++){
+     if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
+        articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
+        //SELECT NUMNER OF ARTOCLE TO LOAD
+        scrollArticleSelected = i;   
+        //Change state of overbutotns 
+        foundOverBox = 1;
+        //boxOver[i] = true;//no sirve 
+         //TEST IF IS OVER
+         textSize(40);fill(200);
+         text("textBoxOver; "+foundOverBox, 500, 90);
      } 
-   } //CLOSE SHOW DETAILS ON ROLLOVERS
+   //TEST IF IS OVER
+     textSize(40);fill(200);
+     text("textBoxOver; "+foundOverBox, 500, 90);
+
+//To check if is over butotn or not, and change over state
+//  if (titleButton == "i") { 
+      if(foundOverBox == 1){textBoxOver = true;
+  }        
+      if(foundOverBox == -1){textBoxOver = false;}    
+//  }//close if button info
+
+
+   }
+ 
+
+
+
+
 
 
 }//4- CLOSE DISPLAY CHAPTER BOXES - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

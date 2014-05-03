@@ -1,6 +1,11 @@
   //VERSION CLEANED WITH TOPIC GRAPHISC INCORPORATED 
 //what is textPressed?
 
+//scrollArticleSelected THIS TAKE THE VALUE OF SELECTED ARTICLE TO LOAD IN:
+//SCROLL
+//QUESITONS FOR EACH ARTILCLE PANEL
+
+
 //PRINCIPAL OVERALL SETTINGS
 int w = 1024;
 int h = 768;
@@ -73,8 +78,7 @@ float boxChapterW = articleBoxW;
 float boxChapterX;
 float boxChapterY;
 boolean[] boxOn = new boolean[numberOfArticles];//on and of articles boxes 
-boolean articleTextPanelUp = false;//Text panel for articles buttons
-float articleTextPanelY;// initial position
+boolean[] boxOver = new boolean[numberOfArticles];//on and of articles boxes 
 
 // TOPICS CATEGORIES - 25 so far - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 String[] topicsCategoryNames = {"Privacidad","Category Name 2","Category Name 3","Category Name 4","Category Name 5","Category Name 6","Category Name 7","Category Name 8","Category Name 9","Category Name 10","Category Name 11","Category Name 12","Category Name 13","Category Name 14","Category Name 15","Category Name 16","Category Name 17","Category Name 18","Category Name 19", "Category Name 20", "Category Name 21", "Category Name 22", "Category Name 23", "Category Name 24","Category Name 25"}; 
@@ -102,6 +106,10 @@ String filename = "test.csv";
 Table rawData;
 
 //TEXTSCROLL UP
+//boolean articleTextPanelUp = false;//Text panel for articles buttons
+//float articleTextPanelY;// initial position
+
+//PANEL TEXTSCROLL UP
 boolean  textBoxOver = false;//check overfor circle button on article scrolltext
 boolean  textBoxUp = false;
 float    textBoxPosY = 800;
@@ -121,9 +129,6 @@ String articleContent;
 
 
 
-
-
-
 void setup() {
   size(w, h);
   background(colorsBg[2]);//BG PALE BLUE ALL
@@ -132,9 +137,10 @@ void setup() {
   //FIll array starting state
   for(int i=0;i<numberOfArticles;i++){
     boxOn[i] = false;//init topic categories button off
+    boxOver[i] = false;//init topic categories button off
   }
   checkCategory();//BEfore in draw...
-  articleTextPanelY = 800;//initial value text each article. 
+  // - - - articleTextPanelY = 800;//initial value text each article. 
   //Load chapters description from external file
   chaptersDescriptions =  loadStrings("chapters/chaptersDescriptions.txt");
   //PANEL INFO
