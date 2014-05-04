@@ -7,7 +7,7 @@ void sectionHistory() {
   int historyX = 0;
   int historyY = gridUnit*4;//position from top
   rectMode(CORNER);  //titles  
-  questions(gridUnit*8, 0, 3);
+  questions(gridUnit*8, gridUnit*1, 3);
   timeline();
 }
 

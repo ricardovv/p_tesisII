@@ -12,7 +12,7 @@ void panelTopics() {
   textFont(fontBodyText);  //sans font w createFont
 
   //QUESITONS AT THE TOP
-  questions(gridUnit*8, gridUnit*0, 2);
+  questions(gridUnit*8, gridUnit*1, 2);
   //VISUALIZATION STRUCTURE
   menuTopics(menuX, menuY);
   //TEXT PANEL WITH CONTENTS
@@ -24,9 +24,9 @@ void panelTopics() {
   textContentPanel(textBoxPosY);
 
 //TEST WHICH TEXT IS LOADING IN THE SCROLL TEXT PANEL  
-textSize(60);
-fill(200);
-text(scrollArticleSelected, 200, 100);
+  //textSize(60);
+  //fill(200);
+//text(scrollArticleSelected, 200, 100);
 
 
 }//panelTopics ENDS
@@ -212,6 +212,8 @@ void chapterDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
 }//3- CLOSE OVER VISUALIZATIONS CHAPTER TOP - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
+
+
 //4- DISPLAY ARTICLES  - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 void articlesDisplayBoxes(){
   //  posY[0] = 0;//starting at...
@@ -240,34 +242,11 @@ void articlesDisplayBoxes(){
       fill(250);
     }
     rect( articlesPosX[i] ,articlesPosY[i] ,articleBoxW-sep*5, bH[i]-sep );
-    //DRAW TEXT
+    //DRAW TITLES TEXT 
     textSize(8);textAlign(LEFT);fill(80);
     text(articlesTitNumber[i], 2+articlesPosX[i], articlesPosY[i]+8);
   }//CLOSE FOR 1- ASSIGN VALUES
 
-
-
-/*
- //SHOW DETAILS ON ROLLOVERS
-   for(int i=0; i<articlesLengthCategory.length; i++){
-     if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
-        articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
-        //SELECT NUMNER OF ARTOCLE TO LOAD
-        scrollArticleSelected = i;   
-        //Change state of overbutotns 
-        foundOverBox = 1;
-        //boxOver[i] = true;
-  //TEST IF IS OVER
-     textSize(40);fill(200);
-     text("textBoxOver; "+foundOverBox, 500, 90);
-
-     } else {
-        foundOverBox = 0;
-  //TEST IF IS OVER
-     textSize(40);fill(200);
-     text("textBoxOver; "+foundOverBox, 500, 90);
-      }
-*/
 
  //SHOW DETAILS ON ROLLOVERS
    for(int i=0; i<articlesLengthCategory.length; i++){
@@ -278,13 +257,13 @@ void articlesDisplayBoxes(){
         //Change state of overbutotns 
         foundOverBox = 1;
         //boxOver[i] = true;//no sirve 
-         //TEST IF IS OVER
-         textSize(40);fill(200);
-         text("textBoxOver; "+foundOverBox, 500, 90);
+         //TEST IF IS READING THE ARTICLE NUMBER
+//         textSize(40);fill(200);
+//         text("textBoxOver; "+foundOverBox, 500, 90);
      } 
    //TEST IF IS OVER
-     textSize(40);fill(200);
-     text("textBoxOver; "+foundOverBox, 500, 90);
+//     textSize(40);fill(200);
+//     text("textBoxOver; "+foundOverBox, 500, 90);
 
 //To check if is over butotn or not, and change over state
 //  if (titleButton == "i") { 
@@ -293,14 +272,8 @@ void articlesDisplayBoxes(){
       if(foundOverBox == -1){textBoxOver = false;}    
 //  }//close if button info
 
-
    }
  
-
-
-
-
-
 
 }//4- CLOSE DISPLAY CHAPTER BOXES - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 

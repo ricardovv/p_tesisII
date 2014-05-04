@@ -56,8 +56,8 @@ void textContentPanel(float _textY) {
   
     //TEXT PANET UP AND DOWN
     butCircleCloseTextTopic.display(textBoxPosY-40, "articletext");
-    //TOOLS
-    textTools(infoX, infoY);
+    //TOOLS - textTools(int _textToolsX, int _textToolsY, int _chapterIsNumber 
+    textTools(infoX, infoY, scrollArticleSelected);
     //FEEDBACK 
     textFeedback(infoX+665, infoY);
 
@@ -131,11 +131,32 @@ void scrollText(int _scrollBoxY) {
 
 
 //TEXT TOOLS SIDE - - - - - - - - - - - - - - - - - - - - - - - 
-void textTools(int _textToolsX, int _textToolsY){
+void textTools(int _textToolsX, int _textToolsY, int _chapterIsNumber){
+  String[] textToolsQuestionsEachArticle = {};
   int textToolsX = _textToolsX;
   int textToolsY = _textToolsY*2;
   int textToolsSep = 20;
-
+  int chapterIsNumber = 1;
+  
+  //PROVISIONAL - TO SELECTNUMBER OF CHAPTER TO DISPLAY QUESITON IN EACHA ARTICLE
+    if(_chapterIsNumber>=1)   {  chapterIsNumber = 0;  }
+    if(_chapterIsNumber>=10)   {  chapterIsNumber = 1;  }
+    if(_chapterIsNumber>=19)   {  chapterIsNumber = 2;  }
+    if(_chapterIsNumber>=24)   {  chapterIsNumber = 3;  }
+    if(_chapterIsNumber>=47)   {  chapterIsNumber = 4;  }
+    if(_chapterIsNumber>=77)   {  chapterIsNumber = 5;  }
+    if(_chapterIsNumber>=84)   {  chapterIsNumber = 6;  }
+    if(_chapterIsNumber>=93)   {  chapterIsNumber = 7;  }
+    if(_chapterIsNumber>=96)   {  chapterIsNumber = 8;  }
+    if(_chapterIsNumber>=99)   {  chapterIsNumber = 9;  }
+    if(_chapterIsNumber>=102)   {  chapterIsNumber = 10;  }
+    if(_chapterIsNumber>=107)   {  chapterIsNumber = 11;  }
+    if(_chapterIsNumber>=109)   {  chapterIsNumber = 12;  }
+    if(_chapterIsNumber>=111)   {  chapterIsNumber = 13;  }  
+    if(_chapterIsNumber>=131)   {  chapterIsNumber = 14;  }
+    if(_chapterIsNumber>=132)   {  chapterIsNumber = 15;  }
+  
+  
 //BG COLOR
   fill(30);
   rect(textToolsX, textToolsY, 260, 600);
@@ -147,7 +168,7 @@ void textTools(int _textToolsX, int _textToolsY){
   text("Some Questions", _textToolsX+textToolsSep, textToolsSep+textToolsY, 220, 600);
   //DETAIL
   textSize(12);
-  text("Quesitons Todo", _textToolsX+textToolsSep, textToolsSep+textToolsY+30, 220, 600);
+  text(scrollArticlesQuestions[chapterIsNumber], _textToolsX+textToolsSep, textToolsSep+textToolsY+30, 220, 600);
 //  text(panelArticleDetailTest[1], _textToolsX+textToolsSep, textToolsSep+textToolsY+30, 220, 600);
 
 
@@ -156,11 +177,15 @@ void textTools(int _textToolsX, int _textToolsY){
   textAlign(LEFT);  textSize(20);
   textSize(16);
   text("Definitions", _textToolsX+textToolsSep, textToolsSep+textToolsY+300, 220, 600);
-  //DETAIL
+  //definitions detail
   textSize(12);
-  text("definitins todo", _textToolsX+textToolsSep, textToolsSep+textToolsY+330, 220, 600);
+  text(scrollArticlesDefinitions[chapterIsNumber], _textToolsX+textToolsSep, textToolsSep+textToolsY+330, 220, 600);
 //  text(panelArticleDetailTest[1], _textToolsX+textToolsSep, textToolsSep+textToolsY+330, 220, 600);
 }//TEXT TOOLS SIDE CLOSE - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+
+
 
 
 

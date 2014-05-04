@@ -44,32 +44,58 @@ void panelTitles(String _title) {
 void questions (int _x, int _y, int _section) {
   //Dirferent Questiojs for each panel
   String[] questionsHome = {
-    "QuestionHome 0", "QuestionHome 1", "QuestionHome 2", "QuestionHome 3", "QuestionHome 4"
+    "QuestionHome 1, QuestionHome 1, QuestionHome 1, QuestionHome 1", 
+    "QuestionHome 2", 
+    "QuestionHome 3"
   };
+  String[] answersHome = {
+    "AnswerHome 1, AnswerHome 1, AnswerHome 1, AnswerHome 1, AnswerHome 1, AnswerHome 1, AnswerHome 1", 
+    "AnswerHome 2", 
+    "AnswerHome 3"
+  };
+
   String[] questionsTopics = {  
-    "QuestionTopics 0", "QuestionTopics 1", "QuestionTopics 2", "QuestionTopics 3", "QuestionTopics 4"
+    "QuestionTopics 1", 
+    "QuestionTopics 2", 
+    "QuestionTopics 3" 
   };
+  String[] answersTopics = {
+    "Topic A, Topic AA, Topic AAA", 
+    "Topic B, Topic BB, Topic BBB", 
+    "Topic C, Topic CC, Topic CCC"
+  };
+
   String[] questionsHistory = { 
-    "QuestionHistory 0", "QuestionHistory 1", "QuestionHistory 2", "QuestionHistory 3", "QuestionHistory 4"
+    "QuestionHistory 1", 
+    "QuestionHistory 2", 
+    "QuestionHistory 3" 
   };
-  String[] questionsInfo = { 
-    "QuestionInfo 0", "QuestionInfo 1", "QuestionInfo 2", "QuestionInfo 3", "QuestionInfo 4"
+  String[] answersHistory = { 
+    "Topic A, Topic AA, Topic AAA", 
+    "Topic B, Topic BB, Topic BBB", 
+    "Topic C, Topic CC, Topic CCC"
   };
+
+
   //To move through questions
   if (frameCount % 200 == 0) {// see if 
     counter += 1;
-    if (counter == 5) {//reset counter to 0
+    if (counter == questionsHome.length) {//reset counter to 0
       counter = 0;
     }
   }
   //Display Questions
   pushMatrix();
-  int questionsBgX = _x;
+  int questionsBgX = 0;//_x w/2
   int questionsBgY = _y;
-  int questionsBgW = w-questionsBgX;
+  int questionsBgW = w;
   int questionsBgH = gridUnit*4;
+
+
   int questionsTextX = questionsBgX + gridUnit*4;//positions for quesitons text
-  int questionsTextY = questionsBgY + gridUnit*3+5;
+  int questionsTextY = questionsBgY + gridUnit*2;
+  int questionsTextW = 600;//positions for quesitons text
+  int questionsTextH = 100;
   //bg questions rect
   noStroke();
   fill(255, 0);
@@ -79,19 +105,33 @@ void questions (int _x, int _y, int _section) {
   //      textFont(fontButtonsHome);
   textSize(14);  
   textAlign(CENTER);
+
   //Select specific question to show
+//QUESTIONS-ANSWERS HOME
   if (_section == 1) {
-//    textAlign(CENTER);
-    text(questionsHome[counter], w/2, questionsTextY-15);
+    fill(#325A78, 150);//BG Quesitons Home
+      rect(questionsBgX, questionsBgY, questionsBgW, questionsBgH*3);//BG QUESTIONS
+    fill(220);//BG Quesitons Home
+    textAlign(CENTER);
+    textSize(20);  
+    text(questionsHome[counter], 200, questionsTextY, questionsTextW, questionsTextH);
+    textSize(18);  
+    text(answersHome[counter], 200, questionsTextY+80, questionsTextW, questionsTextH);
+
   }  
+//QUESTIONS-ANSWERS TOPIC
   if (_section == 2) {
-    text(questionsTopics[counter], w/2, questionsTextY);
+    textSize(16);  
+    text(questionsTopics[counter], 60+w/2, questionsTextY);
+    textSize(10);  fill(0, 150, 250);
+    text("answers? explore: "+answersTopics[counter], 60+w/2, questionsTextY+gridUnit);
   }  
+//QUESTIONS-ANSWERS HISTORY
   if (_section == 3) {
-    text(questionsHistory[counter], w/2, questionsTextY);
-  }  
-  if (_section == 4) {
-    text(questionsInfo[counter], questionsTextX, questionsTextY);
+    textSize(16);  
+    text(questionsHistory[counter], 60+w/2, questionsTextY);
+    textSize(10);  fill(0, 150, 250);
+    text("answers? explore: "+answersHistory[counter], 60+w/2, questionsTextY+gridUnit);
   }  
   popMatrix();
 }//PANEL QUESTIONS ENDS 

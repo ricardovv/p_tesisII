@@ -4,6 +4,7 @@
 //scrollArticleSelected THIS TAKE THE VALUE OF SELECTED ARTICLE TO LOAD IN:
 //SCROLL
 //QUESITONS FOR EACH ARTILCLE PANEL
+PImage guia;
 
 
 //PRINCIPAL OVERALL SETTINGS
@@ -11,7 +12,6 @@ int w = 1024;
 int h = 768;
 int gridUnit = 20;//basig nit of measure positions and sizes
 int counter = 0;// counter to questionsHome
-//int panel = 2;//initia panel to be loaded
 int section = 2;//initia panel to be loaded
 
 // TOPICS ELEMENTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -40,6 +40,9 @@ String[] scrollArticlesAll;//CARGAR
 String scrollArticlesAllJoined;//JOIN IN ONE STRING 
 String[] scrollArticlesAllSplitted;//SPLIT IT BY A GIVEN SYMBOL 
 int scrollArticleSelected;//int articleNumToScroll; //SPECIFIC NUMBER TO PASS
+
+String[] scrollArticlesQuestions;//QUESTION FOR EACH ARTICLE, just example for each chapter
+String[] scrollArticlesDefinitions;//QUESTION FOR EACH ARTICLE, just example for each chapter
 
 int totalNumCharac;//COUNT NUMMBR OF CHARACTERS
 
@@ -90,7 +93,7 @@ String[] topicsCategoryNames = {"Privacidad","Category Name 2","Category Name 3"
 //GRAPHIC ELEMENTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 PShape logo;
 //COLORS Orange home, BLUE HOME, CELESTE TOPICS, CELESTE HISTORY 
-color[] colorsBg = { #E0683D, 100, 50, #AA0000 };
+color[] colorsBg = { #F5683D, 70, 50, #AA0000 };
 //BGStaticMain,  
 color[] colorsButton = { #1b373a };
 //Title bartop white,  
@@ -143,7 +146,6 @@ void setup() {
   // - - - articleTextPanelY = 800;//initial value text each article. 
   //Load chapters description from external file
   chaptersDescriptions =  loadStrings("chapters/chaptersDescriptions.txt");
-  //PANEL INFO
 
   //TEXT BOX ELEMENTS - INFO & TOPICS  
   textBoxUp = false; 
@@ -152,6 +154,8 @@ void setup() {
   butCircleCloseTextTopic = new ButCircle(940, 160, 50, "close");
 
   //TOPIC SCROLL TEXT
+  scrollArticlesQuestions = loadStrings("articles/articlesQuestions.txt");
+  scrollArticlesDefinitions = loadStrings("articles/articlesDefinitions.txt");
   scrollTextIntial();
   //TOPIC TEXT SCROLL CLOSE - - - - - - - - 
 
@@ -168,6 +172,7 @@ void setup() {
   logo =  loadShape("logo.svg");
   smooth();
   ///  noCursor();
+  guia = loadImage("img/guia.jpg");
 
 }
 
@@ -192,7 +197,12 @@ void draw() {
   panelInfo(panelInfoY);//INITIAL POS INFO 
   //  showText();
 
-  
+    // BG IMage reference
+  if (keyPressed == true) {
+    tint(255, 150);
+    image(guia, 0, 0);
+  }
+
 }//CLOSE DRAW
 
 
