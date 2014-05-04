@@ -4,23 +4,19 @@ void TimeLineMain(int _posX) {
 //TIMELINE MAIN
   timeLine();
 
-
   //Buttons to select period to see in timeline
   buttonsPeriods(buttonPeriod1X, height-120, buttonPeriod1W, "Parlamentary Democracy (1810-1973)", timeLineColor1 );
   buttonsPeriods(buttonPeriod2X, height-120, buttonPeriod2W, "Dictatorship (1973-1991)", timeLineColor2 );
   buttonsPeriods(buttonPeriod3X, height-120, buttonPeriod3W, "New Democracy (1991-2015)", timeLineColor3 );
-
 
   //BAR 1 - CONSTITUTION 1925 
   constitutionsPeriodColorBars("CONSTITUTION OF 1925", color(25, 35, 60), 0, height-70, 300);
   //BAR 2 - CONSTITUTION 1980 
   constitutionsPeriodColorBars("CONSTITUTION OF 1980", color(50, 30, 0), 300, height-70, 725);
 
-
   //YEARS BOTTOM 
-   yearsConstitution(100, height);
-
-} 
+   yearsConstitution(100, height-5);
+} //CLOSE TimeLineMain(int _posX)
 
 
 
@@ -32,7 +28,7 @@ void buttonsPeriods(int _x, int _y, int _w, String _t, color _colorBg) {
   int x1 = _x;
   int x2 = _x + _w;
   int y1 = _y;
-  int y2 = _y + 50;
+  int y2 = _y + 130;
   int w = _w/2+x1;
   int foundBottonHome = -1;
   color colorBg = _colorBg;
@@ -65,7 +61,6 @@ void buttonsPeriods(int _x, int _y, int _w, String _t, color _colorBg) {
       }
     
    }//COSE MOUSE PRESSED
-
     //} else {
       //      onOver = 0;
     //}    //close if mousePressed
@@ -93,9 +88,8 @@ void buttonsPeriods(int _x, int _y, int _w, String _t, color _colorBg) {
 
 //HISTORIC CONSTITUTION PERIODS
 void constitutionsPeriodColorBars(String _title, color _color, int _posX, int _posY, int w) {
-  int h = 25;
+  int h = 20;
   int posX = _posX;
-
 
 //DRAW BLOCKS
   pushMatrix();
@@ -105,11 +99,10 @@ void constitutionsPeriodColorBars(String _title, color _color, int _posX, int _p
     fill(130);
     textAlign(CENTER);
     textSize(10);
-    text(_title, _posX+w/2, _posY+16);
+    text(_title, _posX+w/2, _posY+14);
   popMatrix();
 
 }//CLOSE HISTORIC CONSTITUTION PERIODS FUNCTION 
-
 
 
 
@@ -127,7 +120,7 @@ void yearsConstitution(int _posX, int _posY){
   for(int i=1; i<57; i+=3){
     pushMatrix();
     float factor = 15.25;
-      fill(120);
+      fill(100);
       textSize(10);
       textAlign(CENTER);
       text(1959+i, 85 + factor *i, posY-20);

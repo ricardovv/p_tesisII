@@ -54,6 +54,7 @@ void menuTopics(int _x, int _y){
   int menuTitleY = menuTopicY;
   int menuTitleH = 20;//gridUnit*2;
   //MENU TITLE
+  noStroke();
   fill(35, 35, 60);
     rect(menuTopicX, menuTitleY, menuItemW, menuTitleH);//rect bg title
   fill(200);
@@ -63,10 +64,6 @@ void menuTopics(int _x, int _y){
   //A - MENU TOPICS - TEXT AND BOX
   for (int i=0; i<topicsCategoryNames.length; i++) {
       //bg cajas de cada topic
-//    rect(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, menuItemW, menuItemH ); //Each box for category text
-//    fill(170);
- //   textSize(12);
-  //  text("Name of Category "+i, menuTopicX+20, menuTitleY+menuTitleH+menuItemH*i + 8);//Each category text
   articlesButtonsCategories(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, menuItemW, menuItemH, i, topicsCategoryNames[i]);
 
   }//end for
@@ -93,12 +90,35 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
   if (found >=0) {//check if there is a specific rect available.
     if (mousePressed) {
       onOver = 70;
-        //Check button to highlight articles boxes
-        for(int i=0; i<articlesCategoryHighligth.length;i++){
+/*        //OPTION 1 Check button to highlight articles boxes
+        for(int i=0; i<categ_ArticlesToHigh.length;i++){
           if (myI+1 == articlesCategoryHighligth[i]) { // check myI & categories are equal, myI+1 to avoid 0
              boxOn[i] = true;
           }             
         }//close forloop 
+*/      
+        //OPTION 2 Check button to highlight articles boxes
+//        for(int i=0; i<categ_ArticlesToHigh.length;i++){
+//          if (myI+1 == categ_ArticlesToHigh[i]) { // check myI & categories are equal, myI+1 to avoid 0
+//             boxOn[i] = true;
+//          }             
+//        }//close forloop 
+        
+                // For every column I, visit every row J.
+        for (int i = 0; i < categ_ArticlesToHigh_colsLenght; i++) {
+          for (int j = 0; j < categ_ArticlesToHigh_rowsLenght; j++) {
+            if (myI == i) { // check myI & categories are equal, myI+1 to avoid 0
+            int toOn = categ_ArticlesToHigh[i][j];
+               boxOn[toOn] = true;               
+            }             
+text(myI, 220, 100);        
+
+          }//close for j 
+        }//close for i
+
+        
+  
+        
         
      }else {
        onOver = 50;

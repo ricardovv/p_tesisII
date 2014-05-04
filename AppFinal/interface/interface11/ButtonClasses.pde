@@ -129,11 +129,17 @@ void buttonsTop(int _x, int _y, String _t) {
   if (mouseX>_x && mouseX<x2 && mouseY>y1 && mouseY<y2 ) {//if the mouse position is inside the specific rect. 
     found = 1;//select that specific rect
   } else{found = -1;}
+
   //FOR PANEL INFO - CHANGE OVER STATE - TO panelInfoUp in mouseReleased - Also in the text panel as button circle
   if (titleButton == "i") { 
-      if(found == 1){panelInfoOver = true;}        
-      if(found == -1){panelInfoOver = false;}    
+    //For onOver 
+    if(found == 1){panelInfoUp = true;}      
+    if(found == -1){panelInfoUp = false;}
+    //For void onRelease 
+//    if(found == 1){panelInfoOver = true;}      
+ //   if(found == -1){panelInfoOver = false;} 
   }//close if button info
+
   
   if (found >=0) {//check if there is a specific rect available.    
     if (mousePressed) {
@@ -183,12 +189,7 @@ void buttonsTop(int _x, int _y, String _t) {
 //3- BUTTONS CIRCLE CLOSE PANEL & TEXT SCROLL - - - - - - - - - - - - - - - - - - - - - - - - 
 void mouseReleased() {   //PANEL INFO
   
-//  //PANEL INFO BUTTON - button in buttons top and paneltextScroll
-// if(panelInfoOver == true){ //chek if buton is over
-//      //check if panel is up or not
-//      panelInfoUp = !panelInfoUp;
-//  } //PANEL INFO BUTTON CLOSE
-
+/*  
   //PANEL INFO BUTTON - button in buttons top and paneltextScroll
  if(panelInfoOver == true){ //chek if buton is over
 
@@ -200,9 +201,7 @@ void mouseReleased() {   //PANEL INFO
       }
 
   } //PANEL INFO BUTTON CLOSE
-
-
-
+*/
 
   //PANEL INFO BUTTON - button in buttons top and paneltextScroll
  if(textBoxOver == true){ //chek if buton is over
@@ -215,17 +214,6 @@ void mouseReleased() {   //PANEL INFO
       }
 
   } //PANEL INFO BUTTON CLOSE
-
-
-
-//  //PANEL TEXT SCROLL BUTTON - button in buttons top and paneltextScroll
-// if(textBoxOver == true){ //chek if buton is over
-//      //check if panel is up or not
-//      textBoxUp = !textBoxUp;
-//  } //PANEL INFO BUTTON CLOSE
-
-
-
 
 
 }//3- CLOSE BUTTONS CIRCLE CLOSE PANEL & TEXT SCROLL - - - - - - - - - - - - - - - - - - - - - - - - 
