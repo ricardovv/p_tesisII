@@ -1,0 +1,49 @@
+cap 1:
+- Sabe usted cuales son sus derechos fundamentales?
+- Sabe usted que es el Estado de Derecho?
+
+cap2:
+- Usted sabe por que causas podria perder la nacionalidad?
+
+cap3:
+- conoce la diferencia entre Derechos Humanos y Derechos Civiles?
+ 
+cap4:
+- Usted sabe como el Estado es Administrado?
+
+cap5:
+- Usted conoce la diferencia entre Diputados y Senadores, y sus atribuciones?
+
+cap6:
+- Conoce las atribuciones del Poder Judicial?
+
+cap7:
+- Que es y como se define al Ministerio Publico en Chile?
+
+cap8:
+- Usted sabe que es el Tribunal Constitucional?
+
+cap9:
+- En que consiste la Justicia Electoral?
+
+cap10:
+- Usted sabe cual es el rol del Contralor General de la Republica?
+
+cap11:
+- Que atribuciones de poder poseen Las FF.AA y policiales en Chile? 
+
+cap12:
+- Cual es el objetivo del Consejo de Seguridad Nacional?
+- Quienes conforman el Comite del Consejo de Seguridad Nacional?
+
+cap13:
+- En que sentido es autonomo el Banco Central?
+
+cap14:
+- Como se ordena la administracion Regional hasta la Comunal?
+
+cap15:
+- Que mecanismos existen para reformar la Constitucion?
+
+DT
+- Sabe que son las Disposiciones Transitorias?
