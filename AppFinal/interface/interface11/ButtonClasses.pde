@@ -48,12 +48,6 @@ int newY;
         panelInfoOver = true;//check overfor circle button on article scrolltext
       }
 
-
-
-
-
-
-
       //FOR TEXT SCROLL - CHANGE OVER STATE
       if (textBoxOver == true) { // load INFO  
         textBoxOver = false;//check overfor circle button on article scrolltext
@@ -175,7 +169,7 @@ void buttonsTop(int _x, int _y, String _t) {
   textAlign(CENTER);
   //puts logo instead a letter in button to home
   if (_t == "C") {
-    shape(logo, 5+_x, 10+_y, 240, 210);
+    shape(logo, 5+_x, 9+_y, 32, 24);
   }
   else {
     text(_t, 20+_x, 27+_y);

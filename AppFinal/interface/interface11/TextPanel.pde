@@ -55,7 +55,7 @@ void textContentPanel(float _textY) {
   //  text("Tools: " + panelArticleDetailTest[1], textPosX, textPosY+gridUnit*4, textW/2, 400);
   
     //TEXT PANET UP AND DOWN
-    butCircleCloseTextTopic.display(textBoxPosY-40, "articletext");
+    butCircleCloseTextTopic.display(textBoxPosY, "articletext");
     //TOOLS - textTools(int _textToolsX, int _textToolsY, int _chapterIsNumber 
     textTools(infoX, infoY, scrollArticleSelected);
     //FEEDBACK 
@@ -139,6 +139,7 @@ void textTools(int _textToolsX, int _textToolsY, int _chapterIsNumber){
   int chapterIsNumber = 1;
   
   //PROVISIONAL - TO SELECTNUMBER OF CHAPTER TO DISPLAY QUESITON IN EACHA ARTICLE
+  //Later, each article with a set of quesitons
     if(_chapterIsNumber>=1)   {  chapterIsNumber = 0;  }
     if(_chapterIsNumber>=10)   {  chapterIsNumber = 1;  }
     if(_chapterIsNumber>=19)   {  chapterIsNumber = 2;  }
@@ -156,29 +157,25 @@ void textTools(int _textToolsX, int _textToolsY, int _chapterIsNumber){
     if(_chapterIsNumber>=131)   {  chapterIsNumber = 14;  }
     if(_chapterIsNumber>=132)   {  chapterIsNumber = 15;  }
   
-  
-//BG COLOR
+//BG COLOR OF PANEL LEFT 1 
   fill(30);
   rect(textToolsX, textToolsY, 260, 600);
-
 //TITLES TOOLS QUESTIONS
-  fill(120);
   textAlign(LEFT);  textSize(20);
-  textSize(16);
+  textSize(16);  fill(30, 150, 255);//TITLE COLOR
   text("Some Questions", _textToolsX+textToolsSep, textToolsSep+textToolsY, 220, 600);
   //DETAIL
-  textSize(12);
+  textSize(12); fill(120);
   text(scrollArticlesQuestions[chapterIsNumber], _textToolsX+textToolsSep, textToolsSep+textToolsY+30, 220, 600);
 //  text(panelArticleDetailTest[1], _textToolsX+textToolsSep, textToolsSep+textToolsY+30, 220, 600);
 
 
 //TITLES TOOLS DEFINITIONS
-  fill(120);
   textAlign(LEFT);  textSize(20);
-  textSize(16);
+  textSize(16);fill(30, 150, 255);//TITLE COLOR
   text("Definitions", _textToolsX+textToolsSep, textToolsSep+textToolsY+300, 220, 600);
   //definitions detail
-  textSize(12);
+  textSize(12);  fill(120);
   text(scrollArticlesDefinitions[chapterIsNumber], _textToolsX+textToolsSep, textToolsSep+textToolsY+330, 220, 600);
 //  text(panelArticleDetailTest[1], _textToolsX+textToolsSep, textToolsSep+textToolsY+330, 220, 600);
 }//TEXT TOOLS SIDE CLOSE - - - - - - - - - - - - - - - - - - - - - - - 
@@ -200,20 +197,18 @@ void textFeedback(int _textFeedbackX, int _textFeedbackY){
   rect(textFeedbackX, textFeedbackY, 260, 600);
 
 //TITLES FEEDBACK QUESTIONARY
-  fill(120);
   textAlign(LEFT);  textSize(20);
-  textSize(16);
+  textSize(16); fill(30, 150, 255);//TITLE COLOR
   text("Questionary", _textFeedbackX+textFeedbackSep, textFeedbackSep+textFeedbackY, 220, 600);
   //DETAIL
-  textSize(12);
+  textSize(12);  fill(120);
   text("Quesitonarie todo", _textFeedbackX+textFeedbackSep, textFeedbackSep+textFeedbackY+30, 220, 600);
   //text(panelArticleDetailTest[1], _textFeedbackX+textFeedbackSep, textFeedbackSep+textFeedbackY+30, 220, 600);
 
 //TITLES FEEDBACK OPINION
-  fill(120);
   textAlign(LEFT);  textSize(20);
-  textSize(16);
   //Opinion
+  textSize(16);fill(30, 150, 255);//TITLE COLOR
   text("Your Brief Opinion", textFeedbackX+textFeedbackSep, textFeedbackSep+textFeedbackY+300, 220, 600);
   textSize(12);
   text("Your name...\n\n\nWrite your Opinion (max 140 ch.)", textFeedbackX+textFeedbackSep, textFeedbackSep+textFeedbackY+330, 220, 600);
@@ -221,5 +216,7 @@ void textFeedback(int _textFeedbackX, int _textFeedbackY){
   fill(50);
   rect(textFeedbackX+textFeedbackSep, textFeedbackSep+textFeedbackY+350, 220, 20);
   rect(textFeedbackX+textFeedbackSep, textFeedbackSep+textFeedbackY+410, 220, 100);
+//  fill(120);//TEXT COLOR
+
 }//TEXT TOOLS SIDE CLOSE - - - - - - - - - - - - - - - - - - - - - - - 
 

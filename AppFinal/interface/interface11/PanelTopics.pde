@@ -64,7 +64,8 @@ void menuTopics(int _x, int _y){
   //A - MENU TOPICS - TEXT AND BOX
   for (int i=0; i<topicsCategoryNames.length; i++) {
       //bg cajas de cada topic
-  articlesButtonsCategories(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, menuItemW, menuItemH, i, topicsCategoryNames[i]);
+//  articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t, int _n) {
+    articlesButtonsCategories(menuTopicX, menuTitleY+menuTitleH+menuItemH*i, menuItemW, menuItemH, i, topicsCategoryNames[i], i);
 
   }//end for
 }
@@ -74,7 +75,7 @@ void menuTopics(int _x, int _y){
 
 
 //9- BUTTONS CATEGORIES - - - - - - - - - - - - - - - - - - - - - - - - 
-void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t) {
+void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t, int _n) {
   int bX = _x;
   int bY = _y;
   int bW = _w;
@@ -82,6 +83,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
   int found = -1;
   int onOver = 30;
   String text = _t;
+  int appearsInNArticles = _i;
   int myI = _i; 
   //check mouse over
   if (  (mouseX>bX && mouseX<bX+bW)   &&  (mouseY>bY && mouseY<bY+bH)  ) {//if the mouse position is inside the specific rect. 
@@ -111,7 +113,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
             int toOn = categ_ArticlesToHigh[i][j];
                boxOn[toOn] = true;               
             }             
-text(myI, 220, 100);        
+        text(myI, 220, 100);        
 
           }//close for j 
         }//close for i
@@ -128,13 +130,13 @@ text(myI, 220, 100);
 //  rectMode(CORNERS);
   fill(onOver);
     rect(bX, bY, bW, bH);
-  fill(100,30,0);
-    rect(bX, bY, bW, 1);//linea roja
-  
+  fill(60,30,0);
+    rect(bX, bY+2, (bW/2)+(appearsInNArticles*3), bH-4);//linea roja larga depende cuantor asticulos
+  //BUTTON TITLE
   fill(150);
   textSize(10);  
   textAlign(LEFT);
-  text(text, bX+10, bY+14);
+  text(text + "   ("+appearsInNArticles+")", bX+10, bY+14);
 }//2- LOSE MAIN NAV BUTTONS AT THE TOP - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
@@ -257,23 +259,47 @@ void articlesDisplayBoxes(){
     }//CLOSE FOR 2
     articlesPosX[i] = int(visualPosX + articleBoxW*countToRight);
     articlesPosY[i] = int(visualPosY + posY[i] + sep);
-    //DRAW BOXES
+
+
+    //DRAW ELLIPSE BOXES
     if(boxOn[i] == false){//change state from category button
       fill(190);
     }else{
       fill(250);
     }
+    //DRAW BOXES    
     rect( articlesPosX[i] ,articlesPosY[i] ,articleBoxW-sep*5, bH[i]-sep );
+
     //DRAW TITLES TEXT 
     textSize(8);textAlign(LEFT);fill(80);
     text(articlesTitNumber[i], 2+articlesPosX[i], articlesPosY[i]+8);
+
+    //DRAW ELLIPSES CROSS REFERENCES 
+    fill(210, 60, 60);
+    ellipse( articlesPosX[i]+articleBoxW-10 ,articlesPosY[i]+5 , 8, 8 ); 
+
+
+/*
+//TO HEAVY HERE
+//DRAW REFERENCE LINES
+    int myOrigin = 56;
+    stroke(200, 30, 30); smooth();
+    for(int j=0; j<30; j+=10){
+      line(articlesPosX[myOrigin]+articleBoxW-10 ,articlesPosY[myOrigin]+5,     articlesPosX[j]+articleBoxW-10 ,articlesPosY[j]+5    );
+    }
+    noStroke();
+*/
+
+
   }//CLOSE FOR 1- ASSIGN VALUES
+
+
 
 
  //SHOW DETAILS ON ROLLOVERS
    for(int i=0; i<articlesLengthCategory.length; i++){
      if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
-        articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6" );
+        articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6, Topic 7, Topic 8, Topic 9" );
         //SELECT NUMNER OF ARTOCLE TO LOAD
         scrollArticleSelected = i;   
         //Change state of overbutotns 
@@ -305,10 +331,10 @@ void articlesDisplayBoxes(){
 
 //5- DETAILS OVER ARTICLES BELLOW - on articlesDisplayBoxes()- - - - - - - - - - - - - - - 
 void articleDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, String _articleNumberText, int _articleWordsNum, String _articleTopics ) {  
-  int boxW = 230;
-  int boxH = 110;
+  int boxW = 250;
+  int boxH = 85;
   int boxPosX = 0;
-  int moveX = -120;
+  int moveX = -150;
   int dis = 2;
   noStroke();
   pushMatrix();
@@ -330,16 +356,16 @@ void articleDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
     triangle(10, boxH, 20, boxH, 15, boxH+10);
     rect(boxPosX, 0, boxW, boxH);
       fill(100, 200, 210); //COLOR TEXT 
-      rect(boxPosX, 0, boxW, 30);
+      rect(boxPosX, 0, boxW, 28);//COLOR OF TITLE
     //TEXT
     fill(50);
-    textSize(14);
+    textSize(12);
     textAlign(LEFT);
-    text("Article nº "+_articleNumberText, boxPosX+8, 6, boxW-13, boxH-12 );
+    text("Article nº "+_articleNumberText, boxPosX+6, 6, boxW-13, boxH-10 );
     textSize(10);
-    text("Words: "+_articleWordsNum, boxPosX+8, 34, boxW-15, boxH-1 );
-    text("Topics: "+_articleTopics, boxPosX+8, 54, boxW-15, boxH-15 );
-    text("- click to view text", boxPosX+8, 90, boxW-15, boxH-15 );
+    text("Words: "+_articleWordsNum, boxPosX+180, 8, boxW-15, boxH-1 );
+    text("Topics: "+_articleTopics, boxPosX+6, 32, boxW-15, boxH-15 );
+    text("- click to view text", boxPosX+6, 66, boxW-15, boxH-15 );
   popMatrix();
 }//5- CLOSE DETAILS OVER ARTICLES BELLOW - on articlesDisplayBoxes() - - - - - - - - - - - - - - -  
 
