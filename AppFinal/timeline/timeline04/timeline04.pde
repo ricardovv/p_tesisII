@@ -39,7 +39,7 @@ void setup() {
 
 
 void draw() {
-  background(20);
+  background(10);
   //TIMELINE
   TimeLineMain(100);      
 }//CLOSE DRAW

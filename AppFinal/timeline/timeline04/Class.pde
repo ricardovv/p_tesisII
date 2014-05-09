@@ -33,9 +33,9 @@ void timeLine() {
   //BOX BG IMAGES AND TEXT
   pushMatrix();
     rectMode(CORNER);
-    fill(40);
+    fill(20);
     rect(0, 160, 1024, /*capa[i].height +*/ 374);
-    fill(80);
+    fill(25);
     rect(margenX, 160, 1024-margenX*2, /*capa[i].height +*/ 374);
   popMatrix();
 
@@ -61,8 +61,8 @@ void timeLine() {
 //VER
  //COLOR AREA SELECTOR
  pushMatrix();
-  fill(240, 0, 0);//BG FOR INTERACTIVE TIME BAR
-  rect(0, selectorPosY-1, 1024, barH);
+  fill(timeLineAreaSelectorCurrentColor);//BG FOR INTERACTIVE TIME BAR
+  rect(0, selectorPosY, 1024, barH);
   fill(timeLineColor1);
   //BG 1 GREEN barra timeLine to be put i the  buttons??
   
@@ -70,8 +70,13 @@ void timeLine() {
   rect(margenX-displace, selectorPosY, largoBarraGreeen, barH);
 
   //BG 2 BROWN barra timeLine to be put i the  buttons??
-  fill(timeLineColor2);
+  fill(timeLineColor2); 
   rect(margenX+450-displace, selectorPosY, barColorW - margenX*8, barH);
+  // LINE 1973 ARRIBA
+  stroke(250, 50, 0);line(margenX+450-displace, height-232, margenX+450-displace,  height-173 );
+  noStroke();  //color(50, 30, 0)
+
+
   //BG 3 BLUE barra timeLine to be put i the  buttons??
   fill(timeLineColor3);
   rect(margenX+1020-displace, selectorPosY, barColorW - margenX*11, barH);

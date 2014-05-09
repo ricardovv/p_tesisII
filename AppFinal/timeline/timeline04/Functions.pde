@@ -15,7 +15,7 @@ void TimeLineMain(int _posX) {
   constitutionsPeriodColorBars("   CONSTITUTION OF 1980   ", timeLineColor3, 300, height-70, 725);
 
   // LINE 1973
-  stroke(250, 50, 0);line(300, height-120, 300,  height-50 );
+  stroke(250, 50, 0);line(300, height-120, 300,  height-81 );
   noStroke();  //color(50, 30, 0)
 
   // LINE 1980
@@ -61,7 +61,7 @@ void buttonsPeriods(int _x, int _y, int _w, String _t, color _colorBg) {
       if(_t == "Dictatorship (1973-1991)"){
         timeLineAreaSelectorCurrentColor = timeLineColor2;
         movingIndicatorPeriodX = buttonPeriod2X + buttonPeriod2W/2;
-        displace = 350;//moves bar to posX Period 2
+        displace = 250;//moves bar to posX Period 2
       }
       if(_t == "Transition to Democracy (1991-2010)"){
         timeLineAreaSelectorCurrentColor = timeLineColor3;
