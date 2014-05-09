@@ -10,9 +10,16 @@ void TimeLineMain(int _posX) {
   buttonsPeriods(buttonPeriod3X, height-120, buttonPeriod3W, "New Democracy (1991-2015)", timeLineColor3 );
 
   //BAR 1 - CONSTITUTION 1925 
-  constitutionsPeriodColorBars("CONSTITUTION OF 1925", color(25, 35, 60), 0, height-70, 300);
+  drawArrow(413, height-60, 5, 0);
+  constitutionsPeriodColorBars("CONSTITUTION OF 1925", timeLineColor1, 0, height-70, 300);
   //BAR 2 - CONSTITUTION 1980 
-  constitutionsPeriodColorBars("CONSTITUTION OF 1980", color(50, 30, 0), 300, height-70, 725);
+  drawArrow(427, height-60, 5, 180);  
+  constitutionsPeriodColorBars("   CONSTITUTION OF 1980   ", timeLineColor3, 300, height-70, 725);
+  
+  // LINE 1980
+  stroke(150, 150, 0);line(420, height-70, 420,  height-40 );
+  noStroke();
+  //color(50, 30, 0)
 
   //YEARS BOTTOM 
    yearsConstitution(100, height-5);
@@ -28,7 +35,7 @@ void buttonsPeriods(int _x, int _y, int _w, String _t, color _colorBg) {
   int x1 = _x;
   int x2 = _x + _w;
   int y1 = _y;
-  int y2 = _y + 130;
+  int y2 = _y + 77;
   int w = _w/2+x1;
   int foundBottonHome = -1;
   color colorBg = _colorBg;
@@ -94,9 +101,17 @@ void constitutionsPeriodColorBars(String _title, color _color, int _posX, int _p
 //DRAW BLOCKS
   pushMatrix();
     rectMode(CORNER);
+//LINEA
+    stroke(100);
+    fill(200);
+    rect(_posX, _posY+9, w, 1);
+
+    //BGCOLOR TEXTOS
+    float tW = textWidth(_title);
+    rectMode(CENTER);
     fill(_color);
-    rect(_posX, _posY, w, h);
-    fill(130);
+    rect(_posX+w/2, _posY+10, tW, h);
+    fill(190);
     textAlign(CENTER);
     textSize(10);
     text(_title, _posX+w/2, _posY+14);
@@ -104,6 +119,20 @@ void constitutionsPeriodColorBars(String _title, color _color, int _posX, int _p
 
 }//CLOSE HISTORIC CONSTITUTION PERIODS FUNCTION 
 
+
+
+//
+void drawArrow(int _x, int _y, int _w, float _rot){
+  pushMatrix();
+    stroke(130);
+    translate(_x, _y);
+    rotate(radians(_rot));
+    line(0, 0, _w, 0);
+    line(_w, 0, _w - 6, -6);
+    line(_w, 0, _w - 6, 6);
+    noStroke();
+  popMatrix();
+}
 
 
 
@@ -115,17 +144,16 @@ void yearsConstitution(int _posX, int _posY){
   int w2 = 390;
   int h = 30;
 
-
   //all numbers 1925 to 2014 at the bottom  
   for(int i=1; i<57; i+=3){
     pushMatrix();
     float factor = 15.25;
-      fill(100);
+      fill(120);
       textSize(10);
       textAlign(CENTER);
       text(1959+i, 85 + factor *i, posY-20);
-      stroke(120);
-      line(posX + factor *i, posY-35, posX + factor *i, posY-45);
+      stroke(140);
+      line(posX + factor *i, posY-33, posX + factor *i, posY-40);
      popMatrix();
   }//end 
   

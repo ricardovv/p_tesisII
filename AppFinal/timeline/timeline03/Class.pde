@@ -1,17 +1,15 @@
 
 void timeLine() {
   noStroke(); 
-  ////DISPLAY
-//  //    rectMode(CENTER);
-//  textAlign(CENTER);
-//  textSize(10);
-
-
-//  x = margenX + lado;
+  //DISPLAY
+  //    rectMode(CENTER);
+  //  textAlign(CENTER);
+  //  textSize(10);
+  //  x = margenX + lado;
   int selectorPosY = 160 + 375;
+  int displace = mouseX;
+  int barColorW = 2024;
 
-
- 
 //STRINGS & ARRAYS
   color colorsHistory[] = { #79ACD9, #085A8C, #0C4459, #D9A84E, #BF5239, #DFE0AF    };
   String[][] periodDictatorship = {  
@@ -36,8 +34,6 @@ void timeLine() {
       {  "2013", "Title of 1991", "This is the text detail of number 4\n This is a new Line"  },
       };
 
-
-
 //BOX BG IMAGES AND TEXT
   pushMatrix();
     rectMode(CORNER);
@@ -47,9 +43,7 @@ void timeLine() {
     rect(margenX, 160, 1024-margenX*2, /*capa[i].height +*/ 374);
   popMatrix();
 
-
-
-
+//VER
 //CALC TIME 
   if (mousePressed && mouseButton == LEFT) {
     if ((mouseY > selectorPosY - lado / 2 - tolerancia) && (mouseY < selectorPosY + lado / 2 + tolerancia)) {
@@ -58,23 +52,23 @@ void timeLine() {
 
       if (mouseX > posX) {
         if (pmouseX < width - margenX/2 - lado/2) posX += vel;
-      }
-      else if (mouseX < posX) {
+      } else if (mouseX < posX) {
          if (pmouseX > margenX/2 + lado/2) posX -= vel;
       }
       //cmtstrains the marker
-        posX = constrain(posX, (lado + borda), (width - margenX/2 - lado - borda));
+//ORIG        posX = constrain(posX, (lado + border), (width - margenX/2 - lado - border));
+        posX = constrain(posX, (lado + border), (width - margenX/2 - lado - border));
       }
   }//close If calc tine
 
 
-
+//VER
 //COLOR AREA SELECTOR
  pushMatrix();
   fill(30);//BG of the BG
   rect(0, selectorPosY, 1024, barH);
   fill(timeLineAreaSelectorCurrentColor);//BG barra timeLine to be put i the  buttons??
-  rect(margenX, selectorPosY, 2024 - margenX*2, barH);
+  rect(margenX-displace, selectorPosY, barColorW - margenX*2, barH);
 
 //Moving indicatorPeriod
   pushMatrix();
@@ -86,10 +80,12 @@ void timeLine() {
   popMatrix();
 //  rect(movingIndicatorPeriodX, selectorPosY+barH, 10, barH);//element that moves
 
+
+
 //SELECTOR MOVE. small square. Once corrected the dates, use this
    fill(colorsHistory[4]);
-//  rect(posX, selectorPosY, 2*lado, lado - borda);
-   rect(posX-10, selectorPosY-32, lado/2, lado);
+//  rect(posX, selectorPosY, 2*lado, lado - border);
+   rect(posX, selectorPosY-32, lado/2, lado);
  popMatrix();
 
 
@@ -98,9 +94,9 @@ void timeLine() {
   for (int i = 0; i < periodDictatorship.length; i++) {
     float pt = map(int(periodDictatorship[i][0]), 1960, 2014, margenX + lado, width - margenX - lado);
 
-    text(periodDictatorship[i][1], pt, selectorPosY+ 35);//titles of events
+    text(periodDictatorship[i][1], pt-displace, selectorPosY+ 35);//titles of events
 
-    if (dist(posX, selectorPosY, pt, selectorPosY) <= lado) {
+    if (dist(posX, selectorPosY, pt-displace, selectorPosY) <= lado) {
       fill(200, 0, 0);
       //        ellipse(pt, y, 5, 15);//Events Elements "onOver"
       //text(periodDemocracy[i][1], pt, selectorPosY - 40);
@@ -121,14 +117,16 @@ void timeLine() {
 //        //ellipse(pt, selectorPosY, 5, 15);
 //      }
 
+
+//ver displace
   //EVENTS POINTS
-    fill(150, 150, 200);
-    rect(pt-10, selectorPosY, 20, 15);// ellipses stand
+//    fill(150, 150, 200);
+    rect(pt-displace, selectorPosY, 20, 15);// ellipses stand
     //YEARS
     fill(colorsHistory[5]);
     textAlign(CENTER);
     textSize(10);
-    text(periodDictatorship[i][0], pt, selectorPosY + 55); // TEXT YEARS BOTTOM SELECTOR
+    text(periodDictatorship[i][0], pt-displace, selectorPosY + 55); // TEXT YEARS BOTTOM SELECTOR
   }
 
 }//ENDS TIMELINE CLASS

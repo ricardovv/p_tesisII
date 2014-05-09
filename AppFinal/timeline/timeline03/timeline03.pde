@@ -1,5 +1,7 @@
 //int posXGuides;
 
+//lado
+
 
 //VARIABLES TIMELINE KEEP IT IN MAIN STRIUCTUE
 //PImage guia; // image bg 
@@ -8,7 +10,7 @@ PImage[] imgsTimeLine = new PImage[10];
   int lado = 30;//dimensions box and timeline, borders?
   int margenX = 100;// margin form the border
   int  tolerancia = 20;
-  int  borda = 3;
+  int  border = 3;
   int barH =  60;// height ogf the bar top select yeatrs 
   int posX = 100;
   
@@ -41,9 +43,9 @@ void setup() {
 }//CLOSE SETUP
 
 void draw() {
-   background(20);
-//TIMELINE
-   TimeLineMain(100);    
+  background(20);
+  //TIMELINE
+  TimeLineMain(100);    
    
   // BG IMage reference
   if (keyPressed == true) {
