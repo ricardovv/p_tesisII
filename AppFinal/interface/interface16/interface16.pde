@@ -10,7 +10,7 @@ int w = 1024;
 int h = 768;
 int gridUnit = 20;//basig nit of measure positions and sizes
 int counter = 0;// counter to questionsHome
-int section = 2;//initia panel to be loaded
+int section = 3;//initia panel to be loaded
 
 // TOPICS ELEMENTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 float visualPosX = gridUnit*14;//240;
@@ -149,7 +149,6 @@ int border = 3;
 int barH =  80;// height ogf the bar top select yeatrs 
 int posX = 100;
 int displace = mouseX;//Displaces interactive bar to periods
-
 //Positions Periods
 int buttonPeriod1X = 0;
 int buttonPeriod2X = 300;
@@ -158,17 +157,12 @@ int buttonPeriod1W = 300;
 int buttonPeriod2W = 275;
 int buttonPeriod3W = 450;
 int movingIndicatorPeriodX = buttonPeriod1X + 200;
-  
 //colors butotns historic periods
 color timeLineColor1 = color(20, 40, 20);
 color timeLineColor2 = color(70, 40, 0);
 color timeLineColor3 = color(20, 40, 80);
 //COLOR AREA SELECTOR
 color timeLineAreaSelectorCurrentColor = timeLineColor1;
-
-
-//TIMELINE - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 
 
 
