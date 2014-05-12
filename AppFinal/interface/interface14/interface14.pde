@@ -1,9 +1,7 @@
-  //VERSION CLEANED WITH TOPIC GRAPHISC INCORPORATED 
+//VERSION CLEANED WITH TOPIC GRAPHISC INCORPORATED 
 //what is textPressed?
 
 //scrollArticleSelected THIS TAKE THE VALUE OF SELECTED ARTICLE TO LOAD IN:
-//SCROLL
-//QUESITONS FOR EACH ARTILCLE PANEL
 PImage guia;
 
 
@@ -143,13 +141,21 @@ String[] topicsCategoryNames = {
 
 
 //GRAPHIC ELEMENTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-PShape logo;
+PShape graphics_logo;
+PShape graphics_band;
+PShape graphics_star;
+
 //COLORS Orange home, BLUE HOME, CELESTE TOPICS, CELESTE HISTORY 
-color[] colorsBg = { #F5683D, 70, 20, #AA0000 };
-//BGStaticMain,  
-color[] colorsButton = { #1b373a };
-//Title bartop white,  
-color[] colorsTypo = {#FFFFFF };
+//Naranja, LAdrillo, COnnchevino
+color[] colorsBgSectionsReds = { #E65F46, #BE2D28, #821950, #E84921 };
+//CELESTE, Azul, Morado
+color[] colorsBgSectionsBlues = { #199BCD, #146496, #02232C, #8BCADB, #063B4D, #062B39 };
+color[] colorsBgButtonsTop = { #146496, #199BCD, #3C286E  };
+color[] colorsArticleBoxesBlues = { #8BCADB, #199BCD, #146496, #02232C  };
+//Colot Font,  
+color[] colorsFontTitles = {#FFFFFF };
+color[] colorsFontButtons = {#FFFFFF };
+color[] colorsFontBodytext = {#FFFFFF };
 
 //TYPOS
 PFont fontTitles;
@@ -188,7 +194,7 @@ String articleContent;
 
 void setup() {
   size(w, h);
-  background(colorsBg[2]);//BG PALE BLUE ALL
+  background(colorsBgSectionsBlues[0]);//BG PALE BLUE ALL
   //TOPICS
   //FIll array starting state
   for(int i=0;i<numberOfArticles;i++){
@@ -236,7 +242,9 @@ void setup() {
   fontButtonsHome = loadFont("Georgia-Italic-48.vlw");
   //fontBodyText = loadFont("Georgia-48.vlw");
   fontBodyText = createFont("sans", 40);
-  logo =  loadShape("logo.svg");
+  graphics_logo =  loadShape("graphics/graphic_logo.svg");
+  graphics_band =  loadShape("graphics/graphic_band.svg");
+  graphics_star =  loadShape("graphics/graphic_star.svg");
   smooth();
   ///  noCursor();
   guia = loadImage("img/guia.jpg");
@@ -266,7 +274,7 @@ System.out.println(s.replace("\\n",""));
 
 
 void draw() {
-  background(colorsBg[2]);//BG PALE BLUE ALL
+  background(colorsBgSectionsBlues[2]);//BG PALE BLUE ALL
   rectMode(CORNER);
   //LOADING PANELS
 
@@ -274,14 +282,14 @@ void draw() {
     sectionHome();
   }
   if (section == 2) {
-    questions(gridUnit*14, -15, 2);
+    questions(gridUnit*14, gridUnit*1, 2);
     panelTopics();
     myNavs();
     panelTitles("TOPICS");
       //QUESITONS AT THE TOP
   }
   if (section == 3) {
-    questions(gridUnit*14, -15, 3);
+    questions(gridUnit*14, gridUnit*1, 3);
     sectionHistory();
     myNavs();
     panelTitles("HISTORY");
@@ -291,8 +299,8 @@ void draw() {
 
     // BG IMage reference
   if (keyPressed == true) {
-    tint(255, 150);
-    image(guia, 0, 0);
+//    tint(255, 150);
+  //  image(guia, 0, 0);
   }
   
   myTextScroll.setPosition(320,textBoxPosY+180);

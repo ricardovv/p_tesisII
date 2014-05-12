@@ -10,14 +10,22 @@ void sectionHome() {
   int panelHomeY = 0;
   noStroke();
   //Blue box
-  fill(colorsBg[0]);
+  fill(colorsBgSectionsReds[0]);
   rect(panelHomeX, panelHomeY, panelHomeW, panelHomeH);
   //Orange box
-  fill(colorsBg[1]);
+  fill(colorsBgSectionsBlues[2]);
   rect(gridUnit, gridUnit, panelHomeW-gridUnit*2, panelHomeH-gridUnit*2);
+//QUESRIONS FRAME
+   fill(colorsBgSectionsBlues[2], 150);//BG Quesitons Home
+    rect(gridUnit*1, gridUnit*15, panelHomeW-gridUnit*2, gridUnit*10);//BG QUESTIONS
 
-  //TEXT TITLE
-  shape(logo, panelHomeW/2-30, gridUnit*3+0, 50, 70);
+  //SHAPES LOGO< STAR<BAND
+  shape(graphics_logo, panelHomeW/2-30, gridUnit*3+0, 50, 70);
+  shape(graphics_star, panelHomeW-gridUnit*4, panelHomeH/2-gridUnit*0, 30, 30);
+  shape(graphics_star, gridUnit*4, panelHomeH/2-gridUnit*0, 30, 30);
+  shape(graphics_band, gridUnit*24, panelHomeH/2-gridUnit*6, 50, 8);
+//  shape(graphics_band, gridUnit*18, panelHomeH/2+gridUnit*5.55, 280, 6);
+
   fill(255);
   textAlign(CENTER);
   textFont(fontTitles);

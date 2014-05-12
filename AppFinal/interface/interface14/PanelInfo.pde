@@ -20,7 +20,7 @@ void panelInfo(float _infoY) {
     //CAJA BG TRANSPARENT
     int infoX = gridUnit*2;
     int infoY = gridUnit*4;
-    fill(0, 0, 200);
+    fill(colorsBgSectionsBlues[1]);//COLOR BG TEXT
     noStroke();  
     rect(infoX, infoY, infoW, infoH-gridUnit*3 );
   
@@ -46,7 +46,7 @@ void panelInfo(float _infoY) {
     text("ACKNOWLEDGMENTS\n" + panelInfo[2], textPosX, textPosY+gridUnit*15, textW, 400);
     text(panelInfo[3], textPosX, textPosY+gridUnit*25, textW, 400);
     
-    shape(logo, 130, textPosY, 180, 240);
+    shape(graphics_logo, 130, textPosY, 180, 240);
 
   
     if (panelInfoUp) {

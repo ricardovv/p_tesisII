@@ -55,7 +55,7 @@ void menuTopics(int _x, int _y){
   int menuTitleH = 20;//gridUnit*2;
   //MENU TITLE
   noStroke();
-  fill(35, 35, 60);
+  fill(colorsBgSectionsBlues[4]);//COLOR BG TIITLE
     rect(menuTopicX, menuTitleY, menuItemW, menuTitleH);//rect bg title
   fill(200);
     textAlign(LEFT, TOP);  textSize(10);
@@ -81,7 +81,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
   int bW = _w;
   int bH = _h;
   int found = -1;
-  int onOver = 30;
+  int onOver = colorsBgSectionsBlues[5];
   String text = _t;
   int appearsInNArticles = _i;
   int myI = _i; 
@@ -91,7 +91,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
   }
   if (found >=0) {//check if there is a specific rect available.
     if (mousePressed) {
-      onOver = 70;
+      onOver = colorsBgSectionsBlues[1];
 /*        //OPTION 1 Check button to highlight articles boxes
         for(int i=0; i<categ_ArticlesToHigh.length;i++){
           if (myI+1 == articlesCategoryHighligth[i]) { // check myI & categories are equal, myI+1 to avoid 0
@@ -120,17 +120,17 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
         
         
      }else {
-       onOver = 50;
+       onOver = colorsBgSectionsBlues[4];
        boxOn[myI] = false;
      }//close if mousePressed
   }//close if found
 //  rectMode(CORNERS);
   fill(onOver);
     rect(bX, bY, bW, bH);
-  fill(60,30,0);
+  fill(colorsBgSectionsBlues[4]+20);//COLOR BAR
     rect(bX, bY+2, (bW/2)+(appearsInNArticles*3), bH-4);//linea roja larga depende cuantor asticulos
   //BUTTON TITLE
-  fill(150);
+  fill(190);
   textSize(10);  
   textAlign(LEFT);
   text(text + "   ("+appearsInNArticles+")", bX+10, bY+14);
@@ -175,7 +175,7 @@ void chaptersTopDisplay(){
       boxChapterX = visualPosX + boxChapterW*i;
       boxChapterY = visualPosY - boxChapterH;
       noStroke();
-      fill(240, 100, 20);
+      fill(colorsBgSectionsReds[3]);//Color chapters
       rect(boxChapterX, boxChapterY, boxChapterW-sep*5, boxChapterH);//boxes each section, negative value to show at -height
       fill(250);textAlign(LEFT);textSize(10);
       text(chaptersNumber[i], 4+visualPosX+articleBoxW*i, boxChapterY+10);//boxes each article
@@ -183,7 +183,7 @@ void chaptersTopDisplay(){
       if (i == 15) {//select first columt to color
         fill(150, 200, 250);
       }else {
-        fill(200, 240, 240);
+        fill(200, 240, 140);
       }
     //BOX VIS ARTICLE TOP ROLLOVER
     if (  (mouseX>boxChapterX && mouseX<boxChapterX+articleBoxW-sep*5)  &&  (mouseY>boxChapterY && mouseY<boxChapterY+boxChapterH)  ) {
@@ -220,14 +220,14 @@ void chapterDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
     triangle(-10, boxH-10, 10, boxH-10, 0, boxH);
     fill(250, 150, 50); //COLOR TEXT 
     rect(boxPosX, -10, boxW, boxH);
-      fill(240, 130, 30); //COLOR TEXT 
+      fill(colorsBgSectionsReds[3]); //COLOR BOX TOP 
       rect(boxPosX, -10, boxW, 25);
     //TEXT
-    fill(50);
+    fill(255);
     textSize(12);
     textAlign(CENTER);textLeading(9);
     text(_chapterTitle, boxPosX+5, -5, boxW-10, boxH-15 );//TEXT TITLE
-    textSize(10); textLeading(12);
+    textSize(10); textLeading(12);    fill(20);
     text(_chapterDescription, boxPosX+6, 18, boxW-14, boxH );//Text description
   popMatrix();
 }//3- CLOSE OVER VISUALIZATIONS CHAPTER TOP - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -239,6 +239,7 @@ void chapterDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
 void articlesDisplayBoxes(){
   //  posY[0] = 0;//starting at...
   int foundOverBox = -1;
+  int myOrigin=0;
   
   //1- ASSIGN VALUES
   for(int i=0; i<articlesLengthCategory.length; i++){
@@ -260,9 +261,9 @@ void articlesDisplayBoxes(){
 
     //DRAW ELLIPSE BOXES
     if(boxOn[i] == false){//change state from category button
-      fill(80);// 190 color boxes still
+      fill(colorsBgSectionsBlues[1]);// 190 color boxes still
     }else{
-      fill(140);
+      fill(colorsBgSectionsBlues[0]);
     }
     //DRAW BOXES    
     rect( articlesPosX[i] ,articlesPosY[i] ,articleBoxW-sep*5, bH[i]-sep );
@@ -271,25 +272,24 @@ void articlesDisplayBoxes(){
     textSize(8);textAlign(LEFT);fill(250);
     text(articlesTitNumber[i], 2+articlesPosX[i], articlesPosY[i]+8);
 
-    //DRAW ELLIPSES CROSS REFERENCES 
-    fill(210, 60, 60);
-    ellipse( articlesPosX[i]+articleBoxW-10 ,articlesPosY[i]+5 , 8, 8 ); 
-
-
-
-
-///*
-//TO HEAVY HERE
-//DRAW REFERENCE LINES
-    int myOrigin = 100;
-//    stroke(200, 30, 30); //smooth();
+    //DRAW  CROSS REFERENCES 
+    fill(colorsBgSectionsBlues[0]); 
+    int crossPointX = articlesPosX[i]+articleBoxW-16;     int crossPointY = articlesPosY[i]-0;
+    int crossSz = 10;
+    rectMode(CORNER);    rect( crossPointX, articlesPosY[i] , crossSz, crossSz ); 
+     
+    //DRAW REFERENCE LINES //TO HEAVY HERE
+    if(  (mouseX>crossPointX && mouseX<crossPointX+crossSz)   &&     (mouseY>crossPointY && mouseY<crossPointY+crossSz)    ){
+    stroke(#B3B909); //smooth();
     for(int j=0; j<140; j+=10){
-
+      myOrigin = articlesIdNumber[i];//Originn of lines cross reference.
       //crossRefLine(articlesPosX[myOrigin]+articleBoxW-10 ,articlesPosY[myOrigin]+5,     articlesPosX[j]+articleBoxW-10 ,articlesPosY[j]+5    );
-//      line(articlesPosX[0]+articleBoxW-10 ,articlesPosY[0]+5,     articlesPosX[j]+articleBoxW-10 ,articlesPosY[j]+5    );
+      line(articlesPosX[myOrigin-1]+articleBoxW-10 ,articlesPosY[myOrigin-1]+5,     articlesPosX[j]+articleBoxW-10 ,articlesPosY[j]+5    );
     }
     noStroke();
-//*/
+    }//CLOSE CROSS REFERENCE
+
+
 
   }//CLOSE FOR 1- ASSIGN VALUES
 
@@ -299,7 +299,7 @@ void articlesDisplayBoxes(){
  if(articleBoxesActive){
  //SHOW DETAILS ON ROLLOVERS
    for(int i=0; i<articlesLengthCategory.length; i++){
-     if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
+     if (  (mouseX>articlesPosX[i] && mouseX<articlesPosX[i]+articleBoxW-sep*5-10)  &&  (mouseY>articlesPosY[i] && mouseY<articlesPosY[i]+bH[i]-sep)  ) {
         articleDetailsOverVisualization( mouseX, mouseY, articlesTitNumber[i], articlesWordLength[i], "Topic 1, Topic 2, Topic 3, Topic 4, Topic 5, Topic 6, Topic 7, Topic 8, Topic 9" );
         scrollArticleSelected = i; //SELECT NUMBER OF ARTOCLE TO LOAD   
         foundOverBox = 1; //Change state of overbutotns 
@@ -353,14 +353,15 @@ void articleDetailsOverVisualization( float _newPosBoxX, float _newPosBoxY, Stri
     fill(150, 220, 250); //COLOR TEXT 
     triangle(10, boxH, 20, boxH, 15, boxH+10);
     rect(boxPosX, 0, boxW, boxH);
-      fill(100, 200, 210); //COLOR TEXT 
+      fill(colorsBgSectionsBlues[0]); //COLOR TEXT 
       rect(boxPosX, 0, boxW, 28);//COLOR OF TITLE
     //TEXT
-    fill(50);
+    fill(250);//color text top
     textSize(12);
     textAlign(LEFT);
     text("Article nº "+_articleNumberText, boxPosX+6, 6, boxW-13, boxH-10 );
     textSize(10);
+    fill(20);//color text box
     text("Words: "+_articleWordsNum, boxPosX+180, 8, boxW-15, boxH-1 );
     text("Topics: "+_articleTopics, boxPosX+6, 32, boxW-15, boxH-15 );
     text("- click to view text", boxPosX+6, 66, boxW-15, boxH-15 );
@@ -378,9 +379,9 @@ void visualizationLabels(float _x, float _y){
   float sepX = bW+10;
   float sepY = bH+ 5;
   color colText = color(200, 200, 200);
-  color col1 = color(200, 0, 0);
-  color col2 = color(200, 200, 0);
-  color col3 = color(0, 200, 200);
+  color col1 = colorsBgSectionsReds[3];//Color chapters;
+  color col2 = colorsBgSectionsBlues[1];
+  color col3 = colorsBgSectionsBlues[0];
   color col4 = color(0, 0, 200);
 
 

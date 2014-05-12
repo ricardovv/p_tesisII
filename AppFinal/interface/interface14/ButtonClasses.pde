@@ -117,7 +117,7 @@ void buttonsTop(int _x, int _y, String _t) {
   int y1 = _y;
   int y2 = _y + gridUnit*2;
   int found = -1;
-  int onOver = colorsButton[0];
+  int onOver = colorsBgButtonsTop[0];
   String titleButton = _t;
   //check mouse over
   if (mouseX>_x && mouseX<x2 && mouseY>y1 && mouseY<y2 ) {//if the mouse position is inside the specific rect. 
@@ -137,7 +137,7 @@ void buttonsTop(int _x, int _y, String _t) {
   
   if (found >=0) {//check if there is a specific rect available.    
     if (mousePressed) {
-      onOver = 150;
+      onOver = colorsBgButtonsTop[2];
       //rect(x1, y1, x2, y2);//select the specific rect founded
       //test buttons to load HOME
       if (_t == "C") { // load HOME
@@ -155,7 +155,7 @@ void buttonsTop(int _x, int _y, String _t) {
       }      
     }//close if (mousePressed)
     else {
-      onOver = 80;
+      onOver = colorsBgButtonsTop[1];;
     }//close if mousePressed
   
 
@@ -164,12 +164,12 @@ void buttonsTop(int _x, int _y, String _t) {
   rectMode(CORNERS);
   fill(onOver);
   rect(x1, y1, x2-1, y2);
-  fill(colorsBg[0]);
+  fill(255);
   textSize(20);  
   textAlign(CENTER);
   //puts logo instead a letter in button to home
   if (_t == "C") {
-    shape(logo, 9+_x, 5+_y, 22, 30);
+    shape(graphics_logo, 9+_x, 5+_y, 22, 30);
   }
   else {
     text(_t, 20+_x, 27+_y);

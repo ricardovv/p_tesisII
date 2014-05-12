@@ -1,7 +1,7 @@
 void myNavs() {
   //grid();
 //BART TOP TO HIDE TEXT SCROLL
-  fill(colorsBg[2], 0);//color bg orange
+  fill(colorsBgSectionsBlues[0], 0);//color bg orange
   rect(0, 0, w, gridUnit*2);//color bg orange
   navBarTop();
   }
@@ -103,7 +103,7 @@ void questions (int _x, int _y, int _section) {
   fill(255, 0);
   rect(questionsBgX, questionsBgY, questionsBgW, questionsBgH);//BG QUESTIONS
   //Text
-  fill(200);
+  fill(colorsBgSectionsBlues[3]);
         textFont(fontButtonsHome);
   textSize(14);  
   textAlign(CENTER);
@@ -111,12 +111,10 @@ void questions (int _x, int _y, int _section) {
   //Select specific question to show
 //QUESTIONS-ANSWERS HOME
   if (_section == 1) {
-    fill(#325A78, 150);//BG Quesitons Home
-      rect(questionsBgX-(questionsBgW/2), questionsBgY, questionsBgW, questionsBgH*3);//BG QUESTIONS
-    fill(220);//BG Quesitons Home
+    fill(#B9EFFF);//BG Quesitons Home
     textAlign(CENTER);
-    textSize(20);  
-    text(questionsHome[counter], 200, questionsTextY, questionsTextW, questionsTextH);
+    textSize(26);  
+    text(questionsHome[counter], 200, questionsTextY+30, questionsTextW, questionsTextH);
     textSize(18);  
     text(answersHome[counter], 200, questionsTextY+80, questionsTextW, questionsTextH);
 
@@ -127,14 +125,15 @@ void questions (int _x, int _y, int _section) {
     textSize(16);  
     text(questionsTopics[counter], questionsTextX, questionsTextY);
         textFont(fontBodyText);    textSize(12);  fill(0, 150, 250); textLeading(14);
-    text("answers? explore: "+answersTopics[counter], questionsTextX, questionsTextY+30);
+    text("answers? explore: "+answersTopics[counter], questionsTextX, questionsTextY+20);
   }  
 //QUESTIONS-ANSWERS HISTORY
   if (_section == 3) {
+    textAlign(LEFT);
     textSize(16);  
-    text(questionsHistory[counter], 60+w/2, questionsTextY);
+    text(questionsHistory[counter], questionsTextX, questionsTextY);
         textFont(fontBodyText);    textSize(12);  fill(0, 150, 250); textLeading(14);
-    text("answers? explore: "+answersHistory[counter], 60+w/2, questionsTextY+gridUnit);
+    text("answers? explore: "+answersHistory[counter], questionsTextX, questionsTextY+20);
   }  
   popMatrix();
 }//PANEL QUESTIONS ENDS 
