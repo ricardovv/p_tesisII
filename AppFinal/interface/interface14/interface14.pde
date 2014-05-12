@@ -246,14 +246,20 @@ void setup() {
 //String number = "Article 1 - %nPersons \nare born \\nfree and equal in dignity and rights.#The family is the fundamental nucleus of society.#The State recognizes and defends the intermediate groups through which society organizes and structures itself and guarantees them the adequate autonomy to fulfill their own specific objectives.#The State is at the service of the human person and its goal is to promote the common good, to which effect it must contribute to create the social conditions which permit each and every one of those composing the national community the greatest spiritual and material fulfillment possible, with full respect for the rights and guarantees that this Constitution establishes.*";
 
 
+/*// / / /  TO SEPARATE LINES
+String number = scrollArticlesAllSplitted[0];
+String[] number_array = number.split("-|%n");
+for(String s: number_array)
+System.out.println(s.replace("\\n",""));
+}
+*/
+
 // / / /  TO SEPARATE LINES
 String number = scrollArticlesAllSplitted[0];
 String[] number_array = number.split("-|%n");
 for(String s: number_array)
 System.out.println(s.replace("\\n",""));
 }
-
-
 
 
 
@@ -291,6 +297,8 @@ void draw() {
   
   myTextScroll.setPosition(320,textBoxPosY+180);
   myTextScroll.setText(scrollArticlesAllSplitted[scrollArticleSelected]);
+
+
 
 }//CLOSE DRAW
 

@@ -8,22 +8,22 @@ void TimeLineMain(int _posX) {
   buttonsPeriods(buttonPeriod2X, height-120, buttonPeriod2W, "Dictatorship (1973-1991)", timeLineColor2 );
   buttonsPeriods(buttonPeriod3X, height-120, buttonPeriod3W, "Transition to Democracy (1991-2010)", timeLineColor3 );
   //BAR 1 - CONSTITUTION 1925 
-  drawArrow(413, height-60, 5, 0);
-  constitutionsPeriodColorBars("CONSTITUTION OF 1925", timeLineColor1, 0, height-70, 300);
+  drawArrow(413, height-70, 5, 0);
+  constitutionsPeriodColorBars("CONSTITUTION OF 1925", timeLineColor1, 0, height-80, 300);
   //BAR 2 - CONSTITUTION 1980 
 //  drawArrow(427, height-60, 5, 180);  
-  constitutionsPeriodColorBars("   CONSTITUTION OF 1980   ", timeLineColor3, 300, height-70, 725);
+  constitutionsPeriodColorBars("   CONSTITUTION OF 1980   ", timeLineColor3, 300, height-80, 725);
 
   // LINE 1973
-  stroke(250, 50, 0);line(300, height-120, 300,  height-81 );
+  stroke(250, 50, 0);line(300, height-120, 300,  height-91 );
   noStroke();  //color(50, 30, 0)
 
   // LINE 1980
-  stroke(150, 150, 0);line(420, height-70, 420,  height-50 );
+  stroke(150, 150, 0);line(420, height-80, 420,  height-60 );
   noStroke();  //color(50, 30, 0)
   //YEARS AT THE BOTTOM 
 
-   yearsConstitution(100, height-5);
+   yearsConstitution(100, height-10);
 } //CLOSE TimeLineMain(int _posX)
 
 
@@ -34,7 +34,7 @@ void buttonsPeriods(int _x, int _y, int _w, String _t, color _colorBg) {
   int x1 = _x;
   int x2 = _x + _w;
   int y1 = _y;
-  int y2 = _y + 40;//Height of buttons
+  int y2 = _y + 30;//Height of buttons
   int w = _w/2+x1;
   int foundBottonHome = -1;
   color colorBg = _colorBg;
@@ -83,7 +83,7 @@ void buttonsPeriods(int _x, int _y, int _w, String _t, color _colorBg) {
   //  textFont(fontButtonsHome);
     textSize(12);  
     textAlign(CENTER);
-    text(_t, w, y1 + 25);//place text in the middle of the button
+    text(_t, w, y1 + 18);//place text in the middle of the button
     rectMode(CORNER);
   popMatrix();
 }//END BUTTONS 

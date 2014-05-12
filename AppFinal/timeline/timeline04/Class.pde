@@ -9,26 +9,35 @@ void timeLine() {
   //STRINGS & ARRAYS
   color colorsHistory[] = { #79ACD9, #085A8C, #0C4459, #D9A84E, #BF5239, #DFE0AF    };
   String[][] periodDictatorship = {  
-      {  "1962", "Title of 1962", "This is the text detail of number 1\n This is a new Line"  }, 
-      {  "1970", "Title of 1962", "This is the text detail of number 1\n This is a new Line"  }, 
-      {  "1973", "Title of 1973", "This is the text detail of number 1\n This is a new Line"  }, 
-      {  "1980", "Title of 1980", "This is the text detail of number 2\n This is a new Line"  }, 
-      {  "1987", "Title of 1987", "This is the text detail of number 3\n This is a new Line"  }, 
+      {  "1962", "Agrarian Reform", "This is the text detail of number 1\n This is a new Line"  }, 
+      {  "1970", "S. Allende is elected President", "This is the text detail of number 1\n This is a new Line"  }, 
+      {  "1973", "Coup in Chile", "This is the text detail of number 1\n This is a new Line"  }, 
+      {  "1977", "Team to Write a New Constitution", "Ortuzar Commision This is the text detail of number 2\n This is a new Line"  }, 
+      {  "1979", "New Constitution First Sketch", "This is the text detail of number 2\n This is a new Line"  }, 
 
-      {  "1989", "Title of 1991", "This is the text detail of number 4\n This is a new Line"  },
-      {  "1991", "Title of 1973", "This is the text detail of number 1\n This is a new Line"  }, 
-      {  "1998", "Title of 1980", "This is the text detail of number 2\n This is a new Line"  }, 
-      {  "2005", "Title of 1987", "This is the text detail of number 3\n This is a new Line"  }, 
-      {  "2013", "Title of 1991", "This is the text detail of number 4\n This is a new Line"  },
+      {  "1980", "Voting for New Constitution", "This is the text detail of number 2\n This is a new Line"  }, 
+      {  "1981", "New Constitution Enacted", "This is the text detail of number 2\n This is a new Line"  }, 
+      {  "1986", "Attempt on Pinochet", "This is the text detail of number 2\n This is a new Line"  }, 
+      {  "1988", "Plebiscite of NO", "This is the text detail of number 3\n This is a new Line"  }, 
+      {  "1990", "New Democrat President", "This is the text detail of number 1\n This is a new Line"  }, 
 
       };
       
   String[][] periodDemocracy = {  
-      {  "1991", "Title of 1973", "This is the text detail of number 1\n This is a new Line"  }, 
-      {  "1998", "Title of 1980", "This is the text detail of number 2\n This is a new Line"  }, 
-      {  "2005", "Title of 1987", "This is the text detail of number 3\n This is a new Line"  }, 
-      {  "2013", "Title of 1991", "This is the text detail of number 4\n This is a new Line"  },
-      };
+      {  "1994", "Eduardo Frei, President", "This is the text detail of number 2\n This is a new Line"  }, 
+      {  "1991", "Jaime Guzman  Killed", "This is the text detail of number 2\n This is a new Line"  }, 
+      {  "2005", "Constitutional Reforms", "This is the text detail of number 4\n This is a new Line"  },
+      {  "2011", "Students Movement", "This is the text detail of number 4\n This is a new Line"  },
+/*      {  "2000", "Ricardo Lagos, President", "This is the text detail of number 3\n This is a new Line"  }, 
+
+      {  "2006", "Michelle Bachelet, President", "This is the text detail of number 1\n This is a new Line"  }, 
+      {  "2010", "Sebastian Pinera, President", "This is the text detail of number 2\n This is a new Line"  }, 
+      {  "2011", "Students Movement", "This is the text detail of number 4\n This is a new Line"  },
+      {  "2014", "Michelle Bachelet, President", "This is the text detail of number 3\n This is a new Line"  }, 
+*/  
+    };
+
+
 
   //BOX BG IMAGES AND TEXT
   pushMatrix();
@@ -41,10 +50,11 @@ void timeLine() {
 
 //VER
   //CALC TIME 
-  if (mousePressed /*&& mouseButton == LEFT*/) {
+//  if (mousePressed /*&& mouseButton == LEFT*/) {
     if ((mouseY > selectorPosY - lado / 2 - tolerancia) && (mouseY < selectorPosY + lado / 2 + tolerancia)) {
       float distancia = dist(mouseX, 0, posX, 0);
-      float vel = map(distancia, 10, width - 10, 0.5, 150);
+//      float vel = map(distancia, 10, width - 10, 0.5, 150);
+      float vel = map(distancia, 5, width - 5, 0.5, 150);
 
       if (mouseX > posX) {
         if (pmouseX < width - margenX/2 - lado/2) posX += vel;
@@ -55,7 +65,7 @@ void timeLine() {
       //ORIG        posX = constrain(posX, (lado + border), (width - margenX/2 - lado - border));
         posX = constrain(posX, (lado + border), (width - margenX/2 - lado - border));
       }
-  }//close If calc time
+//  }//close If calc time
 
 
 //VER
@@ -108,7 +118,8 @@ void timeLine() {
   for (int i = 0; i < periodDictatorship.length; i++) {
 //ORIG    float pt = map(int(periodDictatorship[i][0]), 1960, 2014, margenX + lado, width - margenX - lado);
     float pt = map(int(periodDictatorship[i][0]), 1960, 2014, margenX + lado, barColorW - margenX - lado);
-    text(periodDictatorship[i][1], pt-displace, selectorPosY+ 35);//titles of events
+    textLeading(10);textAlign(LEFT);
+    text(periodDictatorship[i][1], pt-displace, selectorPosY+40, 55, 50);//titles of events
 
     if (dist(posX, selectorPosY, pt-displace, selectorPosY) <= lado) {
       fill(200, 0, 0);
@@ -137,7 +148,7 @@ void timeLine() {
     fill(colorsHistory[5]);
     textAlign(CENTER);
     textSize(10);
-    text(periodDictatorship[i][0], pt-displace, selectorPosY + 55); // TEXT YEARS BOTTOM SELECTOR
+    text(periodDictatorship[i][0], pt-displace, selectorPosY + 20, 30, 40); // TEXT YEARS BOTTOM SELECTOR
   }//CLOS E//Loop trough images and text
 
 }//ENDS TIMELINE CLASS

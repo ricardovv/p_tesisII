@@ -285,7 +285,7 @@ void articlesDisplayBoxes(){
 //    stroke(200, 30, 30); //smooth();
     for(int j=0; j<140; j+=10){
 
-      crossRefLine(articlesPosX[myOrigin]+articleBoxW-10 ,articlesPosY[myOrigin]+5,     articlesPosX[j]+articleBoxW-10 ,articlesPosY[j]+5    );
+      //crossRefLine(articlesPosX[myOrigin]+articleBoxW-10 ,articlesPosY[myOrigin]+5,     articlesPosX[j]+articleBoxW-10 ,articlesPosY[j]+5    );
 //      line(articlesPosX[0]+articleBoxW-10 ,articlesPosY[0]+5,     articlesPosX[j]+articleBoxW-10 ,articlesPosY[j]+5    );
     }
     noStroke();

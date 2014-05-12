@@ -5,9 +5,9 @@
 PImage[] imgsTimeLine = new PImage[10];
 int lado = 30;//dimensions box and timeline, borders?
 int margenX = 100;// margin form the border
-int tolerancia = 20;
+int tolerancia = 10;
 int border = 3;
-int barH =  60;// height ogf the bar top select yeatrs 
+int barH =  80;// height ogf the bar top select yeatrs 
 int posX = 100;
     int displace = mouseX;//Displaces interactive bar to periods
 
