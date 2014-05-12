@@ -91,6 +91,7 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
   }
   if (found >=0) {//check if there is a specific rect available.
     if (mousePressed) {
+
       onOver = colorsBgSectionsBlues[1];
 /*        //OPTION 1 Check button to highlight articles boxes
         for(int i=0; i<categ_ArticlesToHigh.length;i++){
@@ -109,9 +110,10 @@ void articlesButtonsCategories(int _x, int _y, int _w, int _h, int _i, String _t
                 // For every column I, visit every row J.
         for (int i = 0; i < categ_ArticlesToHigh_colsLenght; i++) {
           for (int j = 0; j < categ_ArticlesToHigh_rowsLenght; j++) {
-            if (myI == i) { // check myI & categories are equal, myI+1 to avoid 0
             int toOn = categ_ArticlesToHigh[i][j];
-               boxOn[toOn] = true;               
+                  boxOn[toOn] = false;//to off previous selections
+            if (myI == i) { // check myI & categories are equal, myI+1 to avoid 0
+               boxOn[toOn] = true;//Higlight box               
             }             
         text(myI, 220, 100);        
 
@@ -263,7 +265,9 @@ void articlesDisplayBoxes(){
     if(boxOn[i] == false){//change state from category button
       fill(colorsBgSectionsBlues[1]);// 190 color boxes still
     }else{
-      fill(colorsBgSectionsBlues[0]);
+    //selected box
+    fill(#34A508);
+      //      fill(colorsBgSectionsReds[0]);
     }
     //DRAW BOXES    
     rect( articlesPosX[i] ,articlesPosY[i] ,articleBoxW-sep*5, bH[i]-sep );

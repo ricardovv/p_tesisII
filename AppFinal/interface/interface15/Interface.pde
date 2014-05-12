@@ -35,7 +35,7 @@ void panelTitles(String _title) {
     fill(250);//WHITE
     textSize(16);
     textAlign(LEFT);
-    text(_title, gridUnit*8, gridUnit*1+5);
+    text(_title, gridUnit*7, gridUnit*1+5);
   popMatrix();
 }
 
