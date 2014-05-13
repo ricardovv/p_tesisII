@@ -10,7 +10,7 @@ int w = 1024;
 int h = 768;
 int gridUnit = 20;//basig nit of measure positions and sizes
 int counter = 0;// counter to questionsHome
-int section = 3;//initia panel to be loaded
+int section = 1;//initia panel to be loaded
 
 // TOPICS ELEMENTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 float visualPosX = gridUnit*14;//240;
